@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Queue
+comment0.text=\n\ This\ is\ the\ class\ for\ a\ 'queue'\ data\ structure\n\ It\ takes\ user\ input\ of\ data\ and\ adds\ it\ to\ the\ set\n\ It\ is\ a\ first\ in\ -\ first\ out\ data\ structure\n\ It\ utilises\ the\ node\ class\ to\ create\ the\ queue\n
+comment1.params=
+comment1.target=Queue()
+comment2.params=
+comment2.target=boolean\ isEmpty()
+comment3.params=newNode
+comment3.target=void\ enqueue(Queue.QueueNode)
+comment4.params=
+comment4.target=Queue.QueueNode\ dequeue()
+numComments=5

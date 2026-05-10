@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Node
+comment0.text=\n\ This\ is\ the\ Node\ class\n\ It\ creates\ objects\ for\ each\ name\ structure\ inside\ the\ project\n
+comment1.params=
+comment1.target=Node()
+comment1.text=For\ a\ node\ with\ no\ name\ input
+comment2.params=name
+comment2.target=Node(java.lang.String)
+comment2.text=For\ a\ node\ with\ a\ string\ input
+comment3.params=
+comment3.target=java.lang.String\ getName()
+comment3.text=Getters
+comment4.params=name
+comment4.target=void\ setName(java.lang.String)
+comment4.text=Setters
+numComments=5
