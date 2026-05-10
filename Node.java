@@ -1,4 +1,4 @@
-import java.util.LinkedList;
+
 /**
  * This is the Node class
  * It creates objects for each name structure inside the project
@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class Node{
     private String name;
     
-    private int distance = Integer.MAX_VALUE / 2; // half the max value to protect looping around from happening
+    private int distance = Integer.MAX_VALUE / 2; // placeholder for infinity - half the max value to protect from looping around
     private Queue shortestPath = new Queue();
 
     /* Constructors */
