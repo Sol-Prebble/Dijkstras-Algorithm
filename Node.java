@@ -8,6 +8,8 @@ public class Node{
     
     private int distance = Integer.MAX_VALUE / 2; // placeholder for infinity - half the max value to protect from looping around
     private Queue shortestPath = new Queue();
+    
+    private Edge firstEdge = null;
 
     /* Constructors */
     /* For a node with no name input */
@@ -19,9 +21,23 @@ public class Node{
         this.name = name;
     }
     
+    public void addDestination(Node destination, int distanceToDestination){
+        Edge newEdge = new Edge(destination, distanceToDestination);
+        
+        if(this.firstEdge == null){
+            this.firstEdge = newEdge;
+        } else{
+            newEdge.setNextEdge(this.firstEdge);
+            this.firstEdge = newEdge;
+        }
+    }
+    
     /* Getters */
     public String getName(){
         return(this.name);
+    }
+    public int getDistance(){
+        return(this.distance);
     }
 
     /* Setters */

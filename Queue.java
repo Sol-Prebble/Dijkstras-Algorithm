@@ -25,6 +25,11 @@ public class Queue{
         public QueueNode getNext(){
             return(this.next);
         }
+        
+        /* setters */
+        public void setNext(QueueNode newNode){
+            this.next = newNode;
+        }
     }
     public Queue(){
         // Left empty
@@ -32,14 +37,25 @@ public class Queue{
     public boolean isEmpty(){
         return(this.head==null);
     }
-    public void enqueue(QueueNode newNode){
+    public void enqueue(QueueNode newNode){ //# working on priority
         if(isEmpty()){
             this.head = newNode;
             this.tail = newNode;
         }
         else{
-            //this.tail = newNode.next;
+            int newNodeDistance = newNode.getNode().getDistance();
+            int headDistance = this.head.getNode().getDistance();
+            QueueNode temp = this.head;
+            int tempDistance = temp.getNode().getDistance();
+            
+            while(newNodeDistance > tempDistance){
+                temp = temp.getNext();
+                tempDistance = temp.getNode().getDistance();
+            }
+            //temp.get
+            this.tail.setNext(newNode);
             this.tail = newNode;
+            
         }
     }
     public QueueNode dequeue(){
@@ -48,7 +64,9 @@ public class Queue{
         } else {
             QueueNode queueNode = this.head;
             this.head = queueNode.getNext();
-            System.out.println("dequeue method node: "+queueNode.getNode().getName());
+            if(this.head == null){
+                this.tail = null;
+            }
             return queueNode;
         }
     }

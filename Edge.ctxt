@@ -1,6 +1,20 @@
 #BlueJ class context
 comment0.target=Edge
-comment0.text=\r\n\ Distance\ bewteen\ nodes\r\n\r\n\ @Sol\ prebble\r\n\ @v1\r\n
-comment1.params=targetNode
-comment1.target=Edge(Node)
-numComments=2
+comment0.text=\n\ Distance\ bewteen\ nodes\n\n\ @Sol\ prebble\n\ @v1\n
+comment1.params=targetNode\ distance
+comment1.target=Edge(Node,\ int)
+comment2.params=
+comment2.target=Node\ getTargetNode()
+comment2.text=getters
+comment3.params=
+comment3.target=Edge\ getNextEdge()
+comment4.params=
+comment4.target=int\ getDistance()
+comment5.params=targetNode
+comment5.target=void\ setTargetNode(Node)
+comment5.text=setters
+comment6.params=nextEdge
+comment6.target=void\ setNextEdge(Edge)
+comment7.params=distance
+comment7.target=void\ setDistance(int)
+numComments=8

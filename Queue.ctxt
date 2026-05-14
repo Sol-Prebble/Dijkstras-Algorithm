@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Queue
-comment0.text=\r\n\ This\ is\ the\ class\ for\ a\ 'queue'\ data\ structure\r\n\ It\ takes\ user\ input\ of\ data\ and\ adds\ it\ to\ the\ set\r\n\ It\ is\ a\ first\ in\ -\ first\ out\ data\ structure\r\n\ It\ utilises\ the\ node\ class\ to\ create\ the\ queue\r\n
+comment0.text=\n\ This\ is\ the\ class\ for\ a\ 'queue'\ data\ structure\n\ It\ takes\ user\ input\ of\ data\ and\ adds\ it\ to\ the\ set\n\ It\ is\ a\ first\ in\ -\ first\ out\ data\ structure\n\ It\ utilises\ the\ node\ class\ to\ create\ the\ queue\n
 comment1.params=
 comment1.target=Queue()
 comment2.params=
