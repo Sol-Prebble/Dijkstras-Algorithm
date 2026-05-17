@@ -37,7 +37,7 @@ public class Queue{
     public boolean isEmpty(){
         return(this.head==null);
     }
-    public void enqueue(QueueNode newNode){ //# working on priority
+    public void enqueue(QueueNode newNode){ //# working on priority queue functionality 
         if(isEmpty()){
             this.head = newNode;
             this.tail = newNode;
@@ -46,12 +46,15 @@ public class Queue{
             int newNodeDistance = newNode.getNode().getDistance();
             int headDistance = this.head.getNode().getDistance();
             QueueNode temp = this.head;
+            QueueNode previous = null;
             int tempDistance = temp.getNode().getDistance();
             
             while(newNodeDistance > tempDistance){
+                previous = temp;
                 temp = temp.getNext();
                 tempDistance = temp.getNode().getDistance();
             }
+            previous.setNext(newNode);
             //temp.get
             this.tail.setNext(newNode);
             this.tail = newNode;
