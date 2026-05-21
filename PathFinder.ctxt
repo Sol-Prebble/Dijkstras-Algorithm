@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=PathFinder
+comment0.text=\n\ This\ class\ finds\ the\ shortest\ path\ \n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=
+comment1.target=PathFinder()
+comment2.params=start\ target
+comment2.target=void\ findShortestPath(Node,\ Node)
+comment3.params=nodeCount
+comment3.target=void\ findEdgesToCheck(int)
+numComments=4

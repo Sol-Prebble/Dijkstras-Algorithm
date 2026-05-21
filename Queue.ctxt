@@ -11,4 +11,6 @@ comment3.text=\n\ This\ method\ adds\ a\ node\ to\ the\ queue\n\ It's\ position\
 comment4.params=
 comment4.target=Queue.QueueNode\ dequeue()
 comment4.text=\n\ This\ method\ removes\ the\ first\ node\ in\ the\ queue\n\ It\ takes\ nothing\ and\ returns\ the\ QueueNode\ that\ was\ removed\n
-numComments=5
+comment5.params=
+comment5.target=void\ print()
+numComments=6

@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Edge
-comment0.text=\n\ Distance\ bewteen\ nodes\n\n\ @Sol\ prebble\n\ @v1\n
+comment0.text=\n\ The\ connections\ between\ nodes\n\n\ @Sol\ prebble\n\ @v1\n
 comment1.params=targetNode\ distance
 comment1.target=Edge(Node,\ int)
 comment2.params=targetNode

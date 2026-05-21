@@ -5,7 +5,7 @@
  * It is a first in - first out data structure
  * It utilises the node class to create the queue
  */
-//# Note: could add a this.tail for effectiency to check whether the new node distance is the largest (more efficient)
+// Note: could add a this.tail for effectiency to check whether the new node distance is the largest (more efficient)
 public class Queue{
     private QueueNode head = null;
     /**
@@ -85,5 +85,14 @@ public class Queue{
             this.head = queueNode.getNext();
             return queueNode;
         }
+    }
+    public void print(){
+        Queue temp = new Queue();
+        String fullQueueString = "";
+        temp = this;
+        while(!temp.isEmpty()){
+            fullQueueString += "\n"+temp.dequeue().getNode().getFirstEdge();
+        }
+        System.out.println(fullQueueString);
     }
 }
