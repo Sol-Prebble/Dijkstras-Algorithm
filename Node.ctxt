@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Node
-comment0.text=\r\n\ This\ is\ the\ Node\ class\r\n\ It\ creates\ objects\ for\ each\ name\ structure\ inside\ the\ project\r\n
+comment0.text=\n\ This\ is\ the\ Node\ class\n\ It\ creates\ objects\ for\ each\ name\ structure\ inside\ the\ project\n
 comment1.params=
 comment1.target=Node()
 comment1.text=For\ a\ node\ with\ no\ name\ input

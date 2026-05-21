@@ -13,7 +13,11 @@ public class Edge
     public Edge(Node targetNode, int distance){
         this.targetNode = targetNode;
         this.distance = distance;
-        //this.distance = (int)(Math.random() * 101); // 0 to 100
+        this.nextEdge = null;
+    }
+    public Edge(Node targetNode){
+        this.targetNode = targetNode;
+        this.distance = (int)(Math.random() * 101); // 0 to 100
         this.nextEdge = null;
     }
     
