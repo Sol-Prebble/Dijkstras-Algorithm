@@ -8,6 +8,7 @@
 // Note: could add a this.tail for effectiency to check whether the new node distance is the largest (more efficient)
 public class Queue{
     private QueueNode head = null;
+    private QueueNode tail = null;
     /**
      * Wrapper class
      */
@@ -56,16 +57,15 @@ public class Queue{
      * It's position is based off it's distance variable
      * It takes the node to add and returns nothing (void)
      */
-    public void enqueue(Node node){
+    public void priorityEnqueue(Node node){
         QueueNode newNode = new QueueNode(node);
-        int newNodeDistance = newNode.getNode().getDistance();
+        int newNodeDistance = newNode.getNode().getDistanceFromStart();
         QueueNode temp = this.head;
-        //int queueIndex = 0;
 
         QueueNode dummy = new QueueNode(null);
         dummy.setNext(this.head);
         QueueNode previous = dummy;
-        while(temp != null && newNodeDistance > temp.getNode().getDistance()){
+        while(temp != null && newNodeDistance > temp.getNode().getDistanceFromStart()){
             previous = temp;
             temp = temp.getNext();
         }
@@ -73,17 +73,27 @@ public class Queue{
         previous.setNext(newNode);
         this.head = dummy.getNext();
     }
+    public void enqueue(Node node){
+        QueueNode newNode = new QueueNode(node);
+        if(isEmpty()){
+            this.head = newNode;
+            this.tail = newNode;
+        } else {
+            this.tail.setNext(newNode);
+            this.tail = newNode;
+        }
+    }
     /**
      * This method removes the first node in the queue
      * It takes nothing and returns the QueueNode that was removed
      */
-    public QueueNode dequeue(){
+    public Node dequeue(){
         if(isEmpty()){
-            return(null);
+            return null;
         } else {
             QueueNode queueNode = this.head;
             this.head = queueNode.getNext();
-            return queueNode;
+            return(queueNode.getNode());
         }
     }
     public void print(){
@@ -91,7 +101,7 @@ public class Queue{
         String fullQueueString = "";
         temp = this;
         while(!temp.isEmpty()){
-            fullQueueString += "\n"+temp.dequeue().getNode().getFirstEdge();
+            fullQueueString += "\n"+temp.dequeue();
         }
         System.out.println(fullQueueString);
     }

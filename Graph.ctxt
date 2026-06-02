@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Graph
+comment0.text=\n\ Write\ a\ description\ of\ class\ Graph\ here.\n\ https\://www.w3schools.com/Java/java_hashmap.asp\n\ https\://stackoverflow.com/questions/1348199/what-is-the-difference-between-the-hashmap-and-map-objects-in-java\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=nodes
+comment1.target=Graph(java.util.ArrayList)
+comment2.params=newNode
+comment2.target=void\ addNode(Node)
+comment3.params=nodeName
+comment3.target=Node\ getNode(java.lang.String)
+comment4.params=
+comment4.target=java.util.Map\ getMap()
+comment5.params=
+comment5.target=boolean\ isEmpty()
+numComments=6
