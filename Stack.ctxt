@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.target=Stack
+comment0.text=\n\ Custom\ data\ structure\ class\ for\ a\ 'Stack'\n\ Last\ in,\ last\ out\n\n\ @author\ Sol\ Prebble\n\ @8/6/26\n
+comment1.params=
+comment1.target=Stack()
+comment2.params=
+comment2.target=boolean\ isEmpty()
+comment3.params=node
+comment3.target=void\ push(Node)
+comment4.params=
+comment4.target=Node\ pop()
+numComments=5

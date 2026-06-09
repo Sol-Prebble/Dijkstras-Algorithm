@@ -10,19 +10,39 @@ import java.util.ArrayList;
  */
 public class Graph
 {
-    private Map<String, Node> map = new HashMap<>();
+    /**
+     * Wrapper class
+     */
+    private class GraphNode{
+        Node node;
+        public GraphNode(Node node){
+            this.node = node;
+        }
+
+        /* getters */
+        public Node getNode(){
+            return(this.node);
+        }
+    }
+    private Map<String, GraphNode> map = new HashMap<>();
     public Graph(ArrayList<Node> nodes){
         for(int x=0;x<nodes.size();x++){
             addNode(nodes.get(x));
         }
     }
-    public void addNode(Node newNode){
-        String newNodeName = String.valueOf(newNode.getName()); // convert char to string
+    public Graph(){}
+    public void addNode(Node node){
+        String newNodeName = String.valueOf(node.getName()); // convert char to string
+        GraphNode graphNode = new GraphNode(node);
         /* name is the key to find the node later */
-        this.map.put(newNodeName, newNode);
+        this.map.put(newNodeName, graphNode);
+        //System.out.println("this.map.put: "+newNode.getName());
     }
-    public Node getNode(String nodeName){
-        return(this.map.get(nodeName));
+    public Node getNode(int nodeName){
+        System.out.println("graph.getNode()");
+        String newNodeName = String.valueOf(nodeName); // convert char to string
+        GraphNode graphNode = this.map.get(newNodeName);
+        return(graphNode.getNode());
     }
     public Map getMap(){
         return(this.map);

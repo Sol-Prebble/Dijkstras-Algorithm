@@ -1,12 +1,14 @@
 #BlueJ class context
 comment0.target=PathFinder
-comment0.text=\n\ This\ class\ finds\ the\ shortest\ path\ \n\n\ @Sol\ Prebble\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment0.text=\n\ This\ class\ finds\ the\ shortest\ path\ \n\n\ @Sol\ Prebble\n\ @5/6/26\n
 comment1.params=graph
 comment1.target=PathFinder(Graph)
-comment2.params=graph
-comment2.target=void\ runAlgorithm(Graph)
-comment3.params=graph
-comment3.target=Queue\ generateQueue(Graph)
-comment4.params=currentNode
-comment4.target=void\ findShortestLocalPath(Node)
-numComments=5
+comment2.params=startNode\ endNode
+comment2.target=void\ runAlgorithm(Node,\ Node)
+comment3.params=currentNode
+comment3.target=Node\ findShortestLocalPath(Node)
+comment4.params=startNode\ currentNode
+comment4.target=Stack\ finalPath(Node,\ Node)
+comment5.params=path
+comment5.target=void\ printFinalPath(Stack)
+numComments=6
