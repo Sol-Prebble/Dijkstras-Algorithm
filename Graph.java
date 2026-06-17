@@ -44,6 +44,13 @@ public class Graph
         GraphNode graphNode = this.map.get(newNodeName);
         return(graphNode.getNode());
     }
+    public ArrayList<Node> getAllNodes(){
+        ArrayList<Node> nodes = new ArrayList<>();
+        for(GraphNode wrapper : this.map.values()){
+            nodes.add(wrapper.getNode());
+        }
+        return(nodes);
+    }
     public Map getMap(){
         return(this.map);
     }

@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=PanelCanvas
+comment0.text=\n\ Write\ a\ description\ of\ class\ PanelCanvas\ here.\n\n\ @author\ (your\ name)\n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=graph
+comment1.target=PanelCanvas(Graph)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ PanelCanvas\n
+comment2.params=g
+comment2.target=void\ paintComponent(java.awt.Graphics)
+numComments=3

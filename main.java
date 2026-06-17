@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import javax.swing.*;
 /**
  * Write a description of class main here.
  *
@@ -7,7 +8,32 @@ import java.util.ArrayList;
  */
 public class main
 {
+    private static Node start;
+    private static Node target;
     public static void main(String[] args){
+        
+        
+        
+        
+        
+        Graph graph = new Graph();
+        
+        defaultGraph(graph);
+        PathFinder newPath = new PathFinder(graph);
+        newPath.runAlgorithm(start, target);
+        
+        JFrame window = new JFrame("Dijkstra's algorithm");
+        
+        
+        PanelCanvas canvas = new PanelCanvas(graph);
+        
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.add(canvas);
+        window.setSize(800,500);
+        window.toFront();
+        window.setVisible(true);
+    }
+    private static void defaultGraph(Graph graph){
         ArrayList<Edge> edges = new ArrayList<>();
         ArrayList<Node> nodes = new ArrayList<>();
         
@@ -34,19 +60,11 @@ public class main
         Edge edgeB = new Edge(two,5);
         bEdges.add(edgeB);
         
-        
-        
-        
-        Graph graph = new Graph();
         for(int x = 0; x < nodes.size(); x++){
-            System.out.println("node to add: "+nodes.get(x).getName());
             graph.addNode(nodes.get(x));
-            //System.out.println(graph.getNode(x));
         }
         
-        
-        PathFinder newPath = new PathFinder(graph);
-        newPath.runAlgorithm(zero, two);
-        //newPath.finalPath(C);
+        start = zero;
+        target = two;
     }
 }
