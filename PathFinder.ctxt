@@ -1,10 +1,11 @@
 #BlueJ class context
 comment0.target=PathFinder
 comment0.text=\r\n\ This\ class\ finds\ the\ shortest\ path\ \r\n\r\n\ @Sol\ Prebble\r\n\ @5/6/26\r\n
-comment1.params=graph
-comment1.target=PathFinder(Graph)
+comment1.params=graph\ canvas
+comment1.target=PathFinder(Graph,\ PanelCanvas)
 comment2.params=startNode\ endNode
 comment2.target=void\ runAlgorithm(Node,\ Node)
+comment2.text=\r\n\ https\://www.w3schools.com/java/java_threads.asp\r\n\ https\://pressbooks.pub/javaprogramming/chapter/multithreading-java-programming/\r\n\ https\://www.geeksforgeeks.org/java/thread-sleep-method-in-java-with-examples/\r\n\ \r\n
 comment3.params=currentNode
 comment3.target=void\ findShortestLocalPath(Node)
 comment4.params=startNode\ currentNode

@@ -19,13 +19,15 @@ public class main
         Graph graph = new Graph();
         
         defaultGraph(graph);
-        PathFinder newPath = new PathFinder(graph);
-        newPath.runAlgorithm(start, target);
+        
         
         JFrame window = new JFrame("Dijkstra's algorithm");
         
-        
         PanelCanvas canvas = new PanelCanvas(graph);
+        PathFinder newPath = new PathFinder(graph, canvas);
+        newPath.runAlgorithm(start, target);
+        
+        
         
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(canvas);

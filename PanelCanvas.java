@@ -22,7 +22,7 @@ public class PanelCanvas extends JPanel
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         for(Node n : graph.getAllNodes()){
-            g.setColor(Color.DARK_GRAY);
+            g.setColor(n.getColor());
 
             g.fillOval(n.getX(),n.getY(),n.getRadius(),n.getRadius());
             
@@ -42,16 +42,19 @@ public class PanelCanvas extends JPanel
             int textAscent = fm.getAscent();
             int centreY = n.getY() + (n.getRadius() - textHeight) / 2 + textAscent;
 
-            g.setColor(Color.RED);
+            g.setColor(Color.WHITE);
             g.drawString(text, centreX, centreY);
             
             /* edges */
             ArrayList<Edge> currentEdges = n.getEdges();
+            
             for(int e = 0; e < currentEdges.size(); e++){
+                Edge currentEdge = currentEdges.get(e);
+                g.setColor(currentEdge.getColor());
                 int startNodeCentreX = n.getX() + (n.getRadius() / 2);
                 int startNodeCentreY = n.getY() + (n.getRadius() / 2);
-                int targetNodeCentreX = currentEdges.get(e).getTargetNode().getX() + (n.getRadius() / 2);
-                int targetNodeCentreY = currentEdges.get(e).getTargetNode().getY() + (n.getRadius() / 2);
+                int targetNodeCentreX = currentEdge.getTargetNode().getX() + (n.getRadius() / 2);
+                int targetNodeCentreY = currentEdge.getTargetNode().getY() + (n.getRadius() / 2);
                 g.drawLine(startNodeCentreX, startNodeCentreY, targetNodeCentreX, targetNodeCentreY);
             }
             

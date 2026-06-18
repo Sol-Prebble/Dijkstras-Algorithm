@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.awt.Color;
 /**
  * This is the Node class
  * It creates objects for each name structure inside the project
@@ -12,6 +13,7 @@ public class Node{
     private int x;
     private int y;
     private int radius;
+    private Color color; // node color
     /* Constructors */
     public Node(){}
     public Node (int name){
@@ -22,6 +24,7 @@ public class Node{
         this.x = (int)(Math.random() * 600);
         this.y = (int)(Math.random() * 300);
         this.radius = 30;
+        this.color = Color.DARK_GRAY;
     }
     public Node(int name, ArrayList<Edge> edges){
         this.name = name;
@@ -32,6 +35,7 @@ public class Node{
         this.x = (int)(Math.random() * 600);
         this.y = (int)(Math.random() * 300);
         this.radius = 50;
+        this.color = Color.DARK_GRAY;
     }
     
     public void addDestination(Node destination, int distanceToDestination){
@@ -64,6 +68,9 @@ public class Node{
     public int getRadius(){
         return(this.radius);
     }
+    public Color getColor(){
+        return(this.color);
+    }
     
     /* Setters */
     public void setDistanceFromStart(int distance){
@@ -86,5 +93,8 @@ public class Node{
     }
     public void setRadius(int newValue){
         this.x = newValue;
+    }
+    public void setColor(Color newColor){
+        this.color = newColor;
     }
 }
