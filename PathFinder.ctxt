@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=PathFinder
-comment0.text=\n\ This\ class\ finds\ the\ shortest\ path\ \n\n\ @Sol\ Prebble\n\ @5/6/26\n
+comment0.text=\r\n\ This\ class\ finds\ the\ shortest\ path\ \r\n\r\n\ @Sol\ Prebble\r\n\ @5/6/26\r\n
 comment1.params=graph
 comment1.target=PathFinder(Graph)
 comment2.params=startNode\ endNode

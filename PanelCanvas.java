@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 /**
  * Write a description of class PanelCanvas here.
  *
@@ -28,6 +29,7 @@ public class PanelCanvas extends JPanel
             Font customFont = new Font("SansSerif", Font.BOLD, 18);
             g.setFont(customFont);
             
+            /* nodes */
             String text = String.valueOf(n.getName());
             FontMetrics fm = g.getFontMetrics();
             
@@ -40,9 +42,19 @@ public class PanelCanvas extends JPanel
             int textAscent = fm.getAscent();
             int centreY = n.getY() + (n.getRadius() - textHeight) / 2 + textAscent;
 
-            g.setColor(Color.WHITE);
-            
+            g.setColor(Color.RED);
             g.drawString(text, centreX, centreY);
+            
+            /* edges */
+            ArrayList<Edge> currentEdges = n.getEdges();
+            for(int e = 0; e < currentEdges.size(); e++){
+                int startNodeCentreX = n.getX() + (n.getRadius() / 2);
+                int startNodeCentreY = n.getY() + (n.getRadius() / 2);
+                int targetNodeCentreX = currentEdges.get(e).getTargetNode().getX() + (n.getRadius() / 2);
+                int targetNodeCentreY = currentEdges.get(e).getTargetNode().getY() + (n.getRadius() / 2);
+                g.drawLine(startNodeCentreX, startNodeCentreY, targetNodeCentreX, targetNodeCentreY);
+            }
+            
         }
     }
 }

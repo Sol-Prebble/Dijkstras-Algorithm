@@ -31,7 +31,7 @@ public class Node{
         this.previous = null;
         this.x = (int)(Math.random() * 600);
         this.y = (int)(Math.random() * 300);
-        this.radius = 100;
+        this.radius = 50;
     }
     
     public void addDestination(Node destination, int distanceToDestination){

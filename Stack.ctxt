@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Stack
-comment0.text=\n\ Custom\ data\ structure\ class\ for\ a\ 'Stack'\n\ Last\ in,\ last\ out\n\n\ @author\ Sol\ Prebble\n\ @8/6/26\n
+comment0.text=\r\n\ Custom\ data\ structure\ class\ for\ a\ 'Stack'\r\n\ Last\ in,\ last\ out\r\n\r\n\ @author\ Sol\ Prebble\r\n\ @8/6/26\r\n
 comment1.params=
 comment1.target=Stack()
 comment2.params=
