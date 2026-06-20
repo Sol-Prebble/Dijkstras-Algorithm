@@ -32,7 +32,6 @@ public class PathFinder
                             threadSleep();
                             findShortestLocalPath(currentNode);
                             threadSleep();
-                            recolorNode(currentNode, Color.DARK_GRAY);
                         }
                     }
                     finalPath(startNode, endNode);
@@ -59,6 +58,7 @@ public class PathFinder
             recolorEdge(currentEdge, Color.DARK_GRAY);
             returnNode = targetNode;
         }
+        recolorNode(currentNode, Color.LIGHT_GRAY);
         currentNode.setVisited(true);
     }
 
@@ -86,7 +86,7 @@ public class PathFinder
 
     public void threadSleep(){
         try{
-            Thread.sleep(750); // pause the algorithm for 750ms
+            Thread.sleep(500); // pause the algorithm for 750ms
         } catch (InterruptedException e){
             e.printStackTrace();
         }

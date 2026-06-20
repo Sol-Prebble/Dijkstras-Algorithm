@@ -5,4 +5,6 @@ comment1.params=args
 comment1.target=void\ main(java.lang.String[])
 comment2.params=graph
 comment2.target=void\ defaultGraph(Graph)
-numComments=3
+comment3.params=start\ target
+comment3.target=int\ edgeDistanceCalc(Node,\ Node)
+numComments=4

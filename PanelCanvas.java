@@ -7,7 +7,7 @@ import java.util.ArrayList;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class PanelCanvas extends JPanel
+public class PanelCanvas extends JPanel 
 {
     private Graph graph;
     /**
@@ -21,7 +21,21 @@ public class PanelCanvas extends JPanel
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
+        this.setBackground(Color.GRAY);
         for(Node n : graph.getAllNodes()){
+            /* edges */
+            ArrayList<Edge> currentEdges = n.getEdges();
+            for(int e = 0; e < currentEdges.size(); e++){
+                Edge currentEdge = currentEdges.get(e);
+                g.setColor(currentEdge.getColor());
+                int startNodeCentreX = n.getX() + (n.getRadius() / 2);
+                int startNodeCentreY = n.getY() + (n.getRadius() / 2);
+                int targetNodeCentreX = currentEdge.getTargetNode().getX() + (n.getRadius() / 2);
+                int targetNodeCentreY = currentEdge.getTargetNode().getY() + (n.getRadius() / 2);
+                g.drawLine(startNodeCentreX, startNodeCentreY, targetNodeCentreX, targetNodeCentreY);
+              }
+            
+            /* nodes */
             g.setColor(n.getColor());
 
             g.fillOval(n.getX(),n.getY(),n.getRadius(),n.getRadius());
@@ -45,18 +59,9 @@ public class PanelCanvas extends JPanel
             g.setColor(Color.WHITE);
             g.drawString(text, centreX, centreY);
             
-            /* edges */
-            ArrayList<Edge> currentEdges = n.getEdges();
             
-            for(int e = 0; e < currentEdges.size(); e++){
-                Edge currentEdge = currentEdges.get(e);
-                g.setColor(currentEdge.getColor());
-                int startNodeCentreX = n.getX() + (n.getRadius() / 2);
-                int startNodeCentreY = n.getY() + (n.getRadius() / 2);
-                int targetNodeCentreX = currentEdge.getTargetNode().getX() + (n.getRadius() / 2);
-                int targetNodeCentreY = currentEdge.getTargetNode().getY() + (n.getRadius() / 2);
-                g.drawLine(startNodeCentreX, startNodeCentreY, targetNodeCentreX, targetNodeCentreY);
-            }
+            
+            
             
         }
     }
