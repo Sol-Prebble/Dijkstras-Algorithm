@@ -28,14 +28,11 @@ public class PathFinder
                     while(!nodeOrder.isEmpty()){
                         Node currentNode = nodeOrder.dequeue();
                         if(!currentNode.getVisited()){
-                            currentNode.setColor(Color.YELLOW);
-                            canvas.repaint();
-                            try{
-                                Thread.sleep(1000);
-                            } catch (InterruptedException e){
-                                e.printStackTrace();
-                            }
+                            recolorNode(currentNode, Color.YELLOW);
+                            threadSleep();
                             findShortestLocalPath(currentNode);
+                            threadSleep();
+                            recolorNode(currentNode, Color.DARK_GRAY);
                         }
                     }
                     finalPath(startNode, endNode);
@@ -43,44 +40,38 @@ public class PathFinder
             }).start();
     }
 
-    public void findShortestLocalPath(Node currentNode){ //# working on chaning color back to normal after it has been checked
-        new Thread(() -> {
-                    Node returnNode = null;
-                    for(int x=0;x< currentNode.getEdges().size(); x++){
-                        Edge currentEdge = currentNode.getEdges().get(x);
-                        currentEdge.setColor(Color.YELLOW);
-                        canvas.repaint();
-                        try{
-                            Thread.sleep(1000);
-                        } catch (InterruptedException e){
-                            e.printStackTrace();
-                        }
-                        Node targetNode = currentEdge.getTargetNode();
-                        int proposedDistance = currentNode.getDistanceFromStart() + currentEdge.getDistance();
-                        if(proposedDistance < targetNode.getDistanceFromStart()){
-                            targetNode.setDistanceFromStart(proposedDistance);
-                            nodeOrder.priorityEnqueue(targetNode);
-                            targetNode.setPrevious(currentNode);
-                            currentEdge.setColor(Color.GREEN);
-                            canvas.repaint();
-                        } else {
-                            currentEdge.setColor(Color.DARK_GRAY);
-                            canvas.repaint();
-                        }
-                        returnNode = targetNode;
-                        
-                    }
-                    currentNode.setVisited(true);
-            }).start();
+    public void findShortestLocalPath(Node currentNode){
+
+        Node returnNode = null;
+        for(int x=0;x< currentNode.getEdges().size(); x++){
+            Edge currentEdge = currentNode.getEdges().get(x);
+            recolorEdge(currentEdge, Color.YELLOW);
+            threadSleep();
+            Node targetNode = currentEdge.getTargetNode();
+            int proposedDistance = currentNode.getDistanceFromStart() + currentEdge.getDistance();
+            if(proposedDistance < targetNode.getDistanceFromStart()){
+                targetNode.setDistanceFromStart(proposedDistance);
+                nodeOrder.priorityEnqueue(targetNode);
+                targetNode.setPrevious(currentNode);
+                targetNode.setPreviousEdge(currentEdge);
+            }
+            threadSleep();
+            recolorEdge(currentEdge, Color.DARK_GRAY);
+            returnNode = targetNode;
+        }
+        currentNode.setVisited(true);
     }
 
     public Stack finalPath(Node startNode, Node currentNode){
         Stack path = new Stack();
         while(currentNode!=null){
+            Edge currentEdge = currentNode.getPreviousEdge();
+            recolorNode(currentNode, Color.GREEN);
+            recolorEdge(currentEdge, Color.GREEN);
+            
             path.push(currentNode);
             currentNode = currentNode.getPrevious();
         }
-        //path.push(currentNode);
         printFinalPath(path);
         return path;
     }
@@ -91,5 +82,23 @@ public class PathFinder
             pathData += (path.pop().getName()+", ");
         }
         System.out.println(pathData);
+    }
+
+    public void threadSleep(){
+        try{
+            Thread.sleep(750); // pause the algorithm for 750ms
+        } catch (InterruptedException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void recolorNode(Node currentNode, Color newColor){
+        currentNode.setColor(newColor);
+        canvas.repaint();
+    }
+
+    public void recolorEdge(Edge currentEdge, Color newColor){
+        currentEdge.setColor(newColor);
+        canvas.repaint();
     }
 }

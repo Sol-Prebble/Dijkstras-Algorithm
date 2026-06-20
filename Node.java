@@ -10,6 +10,7 @@ public class Node{
     private int distanceFromStart;
     private boolean visited;
     private Node previous;
+    private Edge previousEdge;
     private int x;
     private int y;
     private int radius;
@@ -21,9 +22,10 @@ public class Node{
         this.distanceFromStart = Integer.MAX_VALUE;
         this.visited = false;
         this.previous = null;
+        this.previousEdge = null;
         this.x = (int)(Math.random() * 600);
         this.y = (int)(Math.random() * 300);
-        this.radius = 30;
+        this.radius = 50;
         this.color = Color.DARK_GRAY;
     }
     public Node(int name, ArrayList<Edge> edges){
@@ -32,6 +34,7 @@ public class Node{
         this.distanceFromStart = Integer.MAX_VALUE;
         this.visited = false;
         this.previous = null;
+        this.previousEdge = null;
         this.x = (int)(Math.random() * 600);
         this.y = (int)(Math.random() * 300);
         this.radius = 50;
@@ -59,6 +62,9 @@ public class Node{
     public Node getPrevious(){
         return(this.previous);
     }
+    public Edge getPreviousEdge(){
+        return(this.previousEdge);
+    }
     public int getX(){
         return(this.x);
     }
@@ -85,14 +91,17 @@ public class Node{
     public void setPrevious(Node previous){
         this.previous = previous;
     }
+    public void setPreviousEdge(Edge previous){
+        this.previousEdge = previous;
+    }
     public void setX(int newValue){
         this.x = newValue;
     }
     public void setY(int newValue){
-        this.x = newValue;
+        this.y = newValue;
     }
     public void setRadius(int newValue){
-        this.x = newValue;
+        this.radius = newValue;
     }
     public void setColor(Color newColor){
         this.color = newColor;
