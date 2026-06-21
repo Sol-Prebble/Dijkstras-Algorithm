@@ -24,36 +24,45 @@ public class main
         PathFinder newPath = new PathFinder(graph, canvas);
 
         JFrame window = new JFrame("Dijkstra's algorithm");
-        JButton button = new JButton("Run");
-        button.setBackground(Color.DARK_GRAY);
-        button.setForeground(Color.WHITE); 
-        button.setBounds(50, 50, 120, 40); 
+        JPopupMenu dropDownMenuStart = new JPopupMenu();
+        JPopupMenu dropDownMenuTarget = new JPopupMenu();
+        Map<String, JMenuItem> startItems = new HashMap();
+        Map<String, JMenuItem> targetItems = new HashMap();
+        
+        
+        for(int x = 0; x < nodes.size(); x++){
+            String name = ("item"+x);
+            startItems.put(name, new JMenuItem(String.valueOf(nodes.get(x).getName())));
+            dropDownMenuStart.add(startItems.get(name));
 
-        JPopupMenu dropDownMenu = new JPopupMenu();
-        Map<String, JMenuItem> items = new HashMap();
+        }
+        
+        /* buttons */
+        /* pick start */
+        JButton pickStart = new JButton("Pick Start Node");
+        pickStart.setBackground(Color.DARK_GRAY);
+        pickStart.setForeground(Color.WHITE); 
+        pickStart.setBounds(50, 50, 120, 40);
+        pickStartButton(nodes, pickStart, dropDownMenuStart, startItems);
+        /* pick target */
+        JButton pickTarget = new JButton("Pick Target Node");
+        pickTarget.setBackground(Color.DARK_GRAY);
+        pickTarget.setForeground(Color.WHITE); 
+        pickTarget.setBounds(50, 110, 120, 40);
+        pickTargetButton(nodes, pickTarget, dropDownMenuTarget, targetItems);
+        /* run */
+        JButton run = new JButton("Run");
+        run.setBackground(Color.DARK_GRAY);
+        run.setForeground(Color.WHITE); 
+        run.setBounds(50, 170, 120, 40);
+        run(run, newPath);
+        
 
-        button.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
-                    //System.out.println("was clicked");
-                    dropDownMenu.show(
-                        button, 
-                        0, 
-                        button.getHeight()
-                    );
-                    for(int x = 0; x < nodes.size(); x++){
-                        String name = ("item"+x);
-                        items.put(name, new JMenuItem(String.valueOf(nodes.get(x).getName())));
-                        dropDownMenu.add(items.get(name));
-                    }
-                    items.get(name).addActionListener(new ActionListener(){
-
-                        });
-                    newPath.runAlgorithm(start, target);
-                }
-            });
-
-        window.add(button);
+        
+        
+        window.add(pickStart);
+        window.add(pickTarget);
+        window.add(run);
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.add(canvas);
@@ -92,13 +101,84 @@ public class main
             graph.addNode(nodes.get(x));
         }
 
-        start = zero;
-        target = five;
+        // start = zero;
+        // target = five;
     }
 
     private static int edgeDistanceCalc(Node start, Node target){
         int x = start.getX() - target.getX();
         int y = start.getY() - target.getY();
         return (int) Math.hypot(x, y);
+    }
+    
+    private static void pickStartButton(ArrayList<Node> nodes, JButton pickStart, JPopupMenu dropDownMenuStart, Map<String, JMenuItem> startItems){
+        
+        
+        pickStart.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    //System.out.println("was clicked");
+                    dropDownMenuStart.show(
+                        pickStart, 
+                        0, 
+                        pickStart.getHeight()
+                    );
+                    for(int x = 0; x < nodes.size(); x++){
+                        String name = ("item"+x);
+                        Node currentNode = nodes.get(x);
+                        startItems.get(name).addActionListener(new ActionListener(){
+                                @Override
+                                public void actionPerformed(ActionEvent e){
+                                    start = currentNode;
+                                    System.out.println("Start: "+start.getName());
+                                    
+                                }
+
+                            });
+                    }
+
+                    
+                }
+            });
+    }
+    private static void pickTargetButton(ArrayList<Node> nodes, JButton pickTarget, JPopupMenu dropDownMenuTarget, Map<String, JMenuItem> targetItems){
+        
+        
+        pickTarget.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    //System.out.println("was clicked");
+                    dropDownMenuTarget.show(
+                        pickTarget, 
+                        0, 
+                        pickTarget.getHeight()
+                    );
+                    for(int x = 0; x < nodes.size(); x++){
+                        String name = ("item"+x);
+                        Node currentNode = nodes.get(x);
+                        targetItems.get(name).addActionListener(new ActionListener(){
+                                @Override
+                                public void actionPerformed(ActionEvent e){
+                                    target = currentNode;
+                                    System.out.println("Target: "+target.getName());
+                                    
+                                }
+
+                            });
+                    }
+
+                    
+                }
+            });
+    }
+    private static void run(JButton run, PathFinder newPath){
+        
+        
+        run.addActionListener(new ActionListener(){
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    newPath.runAlgorithm(start, target);
+                }
+            });
     }
 }
