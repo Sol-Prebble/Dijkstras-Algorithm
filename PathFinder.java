@@ -55,19 +55,22 @@ public class PathFinder
                 targetNode.setPreviousEdge(currentEdge);
             }
             threadSleep();
-            recolorEdge(currentEdge, Color.DARK_GRAY);
+            recolorEdge(currentEdge, Color.LIGHT_GRAY);
             returnNode = targetNode;
         }
         recolorNode(currentNode, Color.LIGHT_GRAY);
         currentNode.setVisited(true);
     }
 
-    public Stack finalPath(Node startNode, Node currentNode){
+    public Stack finalPath(Node startNode, Node currentNode){ //# last edge doesn't get changed
         Stack path = new Stack();
         while(currentNode!=null){
             Edge currentEdge = currentNode.getPreviousEdge();
+            System.out.println(currentNode.getName());
             recolorNode(currentNode, Color.GREEN);
-            recolorEdge(currentEdge, Color.GREEN);
+            if(currentEdge != null){
+                recolorEdge(currentEdge, Color.GREEN);
+            }
             
             path.push(currentNode);
             currentNode = currentNode.getPrevious();
