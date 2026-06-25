@@ -1,18 +1,18 @@
 #BlueJ class context
 comment0.target=Queue
-comment0.text=\n\ This\ is\ the\ class\ for\ a\ 'queue'\ data\ structure\n\ It\ takes\ user\ input\ of\ data\ and\ adds\ it\ to\ the\ set\n\ It\ is\ a\ first\ in\ -\ first\ out\ data\ structure\n\ It\ utilises\ the\ node\ class\ to\ create\ the\ queue\n
+comment0.text=\r\n\ This\ is\ the\ class\ for\ a\ 'queue'\ data\ structure\r\n\ It\ takes\ user\ input\ of\ data\ and\ adds\ it\ to\ the\ set\r\n\ It\ is\ a\ first\ in\ -\ first\ out\ data\ structure\r\n\ It\ utilises\ the\ node\ class\ to\ create\ the\ queue\r\n
 comment1.params=
 comment1.target=Queue()
 comment2.params=
 comment2.target=boolean\ isEmpty()
 comment3.params=node
 comment3.target=void\ priorityEnqueue(Node)
-comment3.text=\n\ This\ method\ adds\ a\ node\ to\ the\ queue\n\ It's\ position\ is\ based\ off\ it's\ distance\ variable\n\ It\ takes\ the\ node\ to\ add\ and\ returns\ nothing\ (void)\n
+comment3.text=\r\n\ This\ method\ adds\ a\ node\ to\ the\ queue\r\n\ It's\ position\ is\ based\ off\ it's\ distance\ variable\r\n\ It\ takes\ the\ node\ to\ add\ and\ returns\ nothing\ (void)\r\n
 comment4.params=node
 comment4.target=void\ enqueue(Node)
 comment5.params=
 comment5.target=Node\ dequeue()
-comment5.text=\n\ This\ method\ removes\ the\ first\ node\ in\ the\ queue\n\ It\ takes\ nothing\ and\ returns\ the\ QueueNode\ that\ was\ removed\n
+comment5.text=\r\n\ This\ method\ removes\ the\ first\ node\ in\ the\ queue\r\n\ It\ takes\ nothing\ and\ returns\ the\ QueueNode\ that\ was\ removed\r\n
 comment6.params=
 comment6.target=void\ print()
 numComments=7
