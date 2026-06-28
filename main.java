@@ -100,20 +100,24 @@ public class main
     }
 
     private static void pickStart(JButton pickStartButton, JPopupMenu dropDownMenu, ArrayList<Node> nodes, Map<String, JMenuItem> items){ //# make the drop down menu close
-        boolean dropDownOpen = false;
-        if(dropDownOpen){dropDownOpen = false;} else{ dropDownOpen = true;}
-        final boolean dropDownOpenFinal = dropDownOpen;
-        
+
         pickStartButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    //System.out.println("was clicked");
-                    dropDownMenu.show(
-                        pickStartButton, 
-                        0, 
-                        pickStartButton.getHeight()
-                    );
-                    dropDownMenu.setVisible(dropDownOpenFinal);
+                    boolean menuVisible = dropDownMenu.isVisible();
+                    if(menuVisible){
+                        dropDownMenu.setVisible(false);
+                        System.out.println("test");
+                    } else if(!menuVisible){
+                        dropDownMenu.show(
+                            pickStartButton, 
+                            0, 
+                            pickStartButton.getHeight()
+                        );
+                        dropDownMenu.removeAll();
+                    }
+
+                    
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
                         String name = ("item"+x);
@@ -124,7 +128,7 @@ public class main
                                 public void actionPerformed(ActionEvent e){
                                     start = currentNode;
                                 }
-                             });
+                            });
                     }
 
                 }
@@ -135,12 +139,20 @@ public class main
         pickTargetButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    //System.out.println("was clicked");
                     dropDownMenu.show(
-                        pickTargetButton, 
-                        0, 
-                        pickTargetButton.getHeight()
-                    );
+                            pickTargetButton, 
+                            0, 
+                            pickTargetButton.getHeight()
+                        );
+                        dropDownMenu.removeAll();
+                    boolean menuVisible = dropDownMenu.isVisible();
+                    if(menuVisible == true){
+                        dropDownMenu.setVisible(false);
+                        System.out.println("test");
+                    } else if(!menuVisible){
+                        dropDownMenu.setVisible(true);
+                        //System.out.println("test");
+                    }
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
                         String name = ("item"+x);
@@ -158,7 +170,7 @@ public class main
             });
     }
 
-    private static void run(JButton runButton, PathFinder newPath){
+    private static void run(JButton runButton, PathFinder newPath){ //# can't run twice
 
         runButton.addActionListener(new ActionListener(){
                 @Override
