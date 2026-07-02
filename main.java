@@ -14,6 +14,9 @@ public class main
 {
     private static Node start;
     private static Node target;
+    /**
+     * Layered Panes: https://docs.oracle.com/javase/8/docs/api/javax/swing/JLayeredPane.html
+     */
     public static void main(String[] args){
         ArrayList<Node> nodes = new ArrayList<>();
         Graph graph = new Graph();
@@ -28,6 +31,7 @@ public class main
         Map<String, JMenuItem> items = new HashMap();
 
         JFrame window = new JFrame("Dijkstra's algorithm");
+        JLayeredPane layeredPane = new JLayeredPane();
 
         /* Buttons */
         JButton pickStartButton = new JButton("Pick Start");
@@ -44,19 +48,29 @@ public class main
         runButton.setBackground(Color.DARK_GRAY);
         runButton.setForeground(Color.WHITE); 
         runButton.setBounds(50, 170, 120, 40);
-
+        
+        /* Layered Pane */
+        layeredPane.add(runButton, new Integer(2));
+        
+        
         /* button functions */
         boolean dropDownOpen = false;
         pickTarget(pickTargetButton, dropDownMenuTarget, nodes, items);
         pickStart(pickStartButton, dropDownMenuStart, nodes, items);
         run(runButton, newPath);
-
-        window.add(pickStartButton);
-        window.add(pickTargetButton);
-        window.add(runButton);
-
+        
+        layeredPane.add(graph, JLayeredPane.DEFAULT_LAYER); //# fix the fact that there are no ngraph apering on the screen. This sort of line might work?
+        layeredPane.add(canvas, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(pickStartButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(pickTargetButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(runButton, JLayeredPane.PALETTE_LAYER);
+        
+        
+        //window.getContentPane().add(layeredPane, BorderLayout.CENTER);
+        window.add(layeredPane);
+        
+        
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.add(canvas);
         window.setSize(800,500);
         window.toFront();
         window.setVisible(true);
@@ -107,7 +121,7 @@ public class main
                     boolean menuVisible = dropDownMenu.isVisible();
                     if(menuVisible){
                         dropDownMenu.setVisible(false);
-                        System.out.println("test");
+                        //System.out.println("test");
                     } else if(!menuVisible){
                         dropDownMenu.show(
                             pickStartButton, 
@@ -139,19 +153,17 @@ public class main
         pickTargetButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    dropDownMenu.show(
+                    boolean menuVisible = dropDownMenu.isVisible();
+                    if(menuVisible){
+                        dropDownMenu.setVisible(false);
+                        //System.out.println("test");
+                    } else if(!menuVisible){
+                        dropDownMenu.show(
                             pickTargetButton, 
                             0, 
                             pickTargetButton.getHeight()
                         );
                         dropDownMenu.removeAll();
-                    boolean menuVisible = dropDownMenu.isVisible();
-                    if(menuVisible == true){
-                        dropDownMenu.setVisible(false);
-                        System.out.println("test");
-                    } else if(!menuVisible){
-                        dropDownMenu.setVisible(true);
-                        //System.out.println("test");
                     }
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
