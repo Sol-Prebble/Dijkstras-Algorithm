@@ -59,10 +59,6 @@ public class PanelCanvas extends JPanel
             g.setColor(Color.WHITE);
             g.drawString(text, centreX, centreY);
             
-            
-            
-            
-            
         }
     }
 }

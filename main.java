@@ -35,23 +35,21 @@ public class main
 
         /* Buttons */
         JButton pickStartButton = new JButton("Pick Start");
-        pickStartButton.setBackground(Color.DARK_GRAY);
-        pickStartButton.setForeground(Color.WHITE); 
-        pickStartButton.setBounds(50, 50, 120, 40); 
-
         JButton pickTargetButton = new JButton("Pick Target");
-        pickTargetButton.setBackground(Color.DARK_GRAY);
-        pickTargetButton.setForeground(Color.WHITE); 
-        pickTargetButton.setBounds(50, 110, 120, 40);
-
         JButton runButton = new JButton("Run");
+        
+        pickStartButton.setBackground(Color.DARK_GRAY);
+        pickTargetButton.setBackground(Color.DARK_GRAY);
         runButton.setBackground(Color.DARK_GRAY);
+        
+        pickStartButton.setForeground(Color.WHITE); 
+        pickTargetButton.setForeground(Color.WHITE);
         runButton.setForeground(Color.WHITE); 
+        
+        pickStartButton.setBounds(50, 50, 120, 40); 
+        pickTargetButton.setBounds(50, 110, 120, 40);
         runButton.setBounds(50, 170, 120, 40);
-        
-        /* Layered Pane */
-        layeredPane.add(runButton, new Integer(2));
-        
+        canvas.setBounds(0,0,800,500);
         
         /* button functions */
         boolean dropDownOpen = false;
@@ -59,14 +57,17 @@ public class main
         pickStart(pickStartButton, dropDownMenuStart, nodes, items);
         run(runButton, newPath);
         
-        layeredPane.add(graph, JLayeredPane.DEFAULT_LAYER); //# fix the fact that there are no ngraph apering on the screen. This sort of line might work?
+        /* Layered Pane */
         layeredPane.add(canvas, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(pickStartButton, JLayeredPane.PALETTE_LAYER);
         layeredPane.add(pickTargetButton, JLayeredPane.PALETTE_LAYER);
         layeredPane.add(runButton, JLayeredPane.PALETTE_LAYER);
         
+
         
-        //window.getContentPane().add(layeredPane, BorderLayout.CENTER);
+        
+        //window.getContentPane().add(layeredPane);
+        //window.add(canvas);
         window.add(layeredPane);
         
         
@@ -113,7 +114,7 @@ public class main
         return (int) Math.hypot(x, y);
     }
 
-    private static void pickStart(JButton pickStartButton, JPopupMenu dropDownMenu, ArrayList<Node> nodes, Map<String, JMenuItem> items){ //# make the drop down menu close
+    private static void pickStart(JButton pickStartButton, JPopupMenu dropDownMenu, ArrayList<Node> nodes, Map<String, JMenuItem> items){
 
         pickStartButton.addActionListener(new ActionListener(){
                 @Override
@@ -123,15 +124,9 @@ public class main
                         dropDownMenu.setVisible(false);
                         //System.out.println("test");
                     } else if(!menuVisible){
-                        dropDownMenu.show(
-                            pickStartButton, 
-                            0, 
-                            pickStartButton.getHeight()
-                        );
+                        
                         dropDownMenu.removeAll();
                     }
-
-                    
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
                         String name = ("item"+x);
@@ -144,7 +139,11 @@ public class main
                                 }
                             });
                     }
-
+                    dropDownMenu.show(
+                            pickStartButton, 
+                            0, 
+                            pickStartButton.getHeight()
+                        );
                 }
             });
     }
@@ -153,16 +152,13 @@ public class main
         pickTargetButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
+                    
                     boolean menuVisible = dropDownMenu.isVisible();
                     if(menuVisible){
                         dropDownMenu.setVisible(false);
                         //System.out.println("test");
                     } else if(!menuVisible){
-                        dropDownMenu.show(
-                            pickTargetButton, 
-                            0, 
-                            pickTargetButton.getHeight()
-                        );
+                        
                         dropDownMenu.removeAll();
                     }
                     for(int x = 0; x < nodes.size(); x++){
@@ -177,7 +173,11 @@ public class main
                                 }
                             });
                     }
-
+                    dropDownMenu.show(
+                            pickTargetButton, 
+                            0, 
+                            pickTargetButton.getHeight()
+                        );
                 }
             });
     }
