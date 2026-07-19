@@ -14,11 +14,18 @@ public class main
 {
     private static Node start;
     private static Node target;
+    public main(ArrayList<Node> nodes){
+        resetNodeColors(nodes);
+    }
+
     /**
      * Layered Panes: https://docs.oracle.com/javase/8/docs/api/javax/swing/JLayeredPane.html
      */
     public static void main(String[] args){
-        ArrayList<Node> nodes = new ArrayList<>();
+        ArrayList<Node> nodes = new ArrayList<>(); // arraylist for all of the nodes in the graph
+
+        //new main(nodes);
+
         Graph graph = new Graph();
 
         defaultGraph(nodes, graph);
@@ -26,57 +33,130 @@ public class main
         PanelCanvas canvas = new PanelCanvas(graph);
         PathFinder newPath = new PathFinder(graph, canvas);
 
-        JPopupMenu dropDownMenuStart = new JPopupMenu();
-        JPopupMenu dropDownMenuTarget = new JPopupMenu();
+        /* drop down menu's */
+        JPopupMenu dropDownMenu = new JPopupMenu();
+
         Map<String, JMenuItem> items = new HashMap();
 
         JFrame window = new JFrame("Dijkstra's algorithm");
         JLayeredPane layeredPane = new JLayeredPane();
 
         /* Buttons */
-        JButton pickStartButton = new JButton("Pick Start");
-        JButton pickTargetButton = new JButton("Pick Target");
-        JButton runButton = new JButton("Run");
+        buttons(layeredPane, canvas, dropDownMenu, nodes, items, newPath);
         
-        pickStartButton.setBackground(Color.DARK_GRAY);
-        pickTargetButton.setBackground(Color.DARK_GRAY);
-        runButton.setBackground(Color.DARK_GRAY);
-        
-        pickStartButton.setForeground(Color.WHITE); 
-        pickTargetButton.setForeground(Color.WHITE);
-        runButton.setForeground(Color.WHITE); 
-        
-        pickStartButton.setBounds(50, 50, 120, 40); 
-        pickTargetButton.setBounds(50, 110, 120, 40);
-        runButton.setBounds(50, 170, 120, 40);
+        /* canvas */
         canvas.setBounds(0,0,800,500);
-        
-        /* button functions */
-        boolean dropDownOpen = false;
-        pickTarget(pickTargetButton, dropDownMenuTarget, nodes, items);
-        pickStart(pickStartButton, dropDownMenuStart, nodes, items);
-        run(runButton, newPath);
-        
-        /* Layered Pane */
-        layeredPane.add(canvas, JLayeredPane.DEFAULT_LAYER);
-        layeredPane.add(pickStartButton, JLayeredPane.PALETTE_LAYER);
-        layeredPane.add(pickTargetButton, JLayeredPane.PALETTE_LAYER);
-        layeredPane.add(runButton, JLayeredPane.PALETTE_LAYER);
+
+            
         
 
+        /* Layered Pane */
         
-        
-        //window.getContentPane().add(layeredPane);
-        //window.add(canvas);
+
         window.add(layeredPane);
-        
-        
+
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setSize(800,500);
         window.toFront();
         window.setVisible(true);
     }
-
+    /**
+     * Button methods
+     */
+    /**
+     * This method role is to create the buttons that appear on the screen and call all of the functions that are involved in setting them up
+     * @param 
+     *      layeredPane - an object of the core java class to set the depth of content in the GUI
+     *      canvas - the set that all of the content is displayed
+     *      dropDownMenu - the menu that pops up with all of the nodes as options
+     *      nodes - an arraylist that acts as storage for all of the nodes in the graph
+     *      items - a map that is an index version of the 'nodes' arraylist. Used for dropdown menu names
+     *      newPath - an object of the custom PathFinder class that contains the actual algorithm. Used to start the algorithm.
+     *      
+     * @return void (nothing)
+     *      
+     */
+    private static void buttons(JLayeredPane layeredPane, PanelCanvas canvas, JPopupMenu dropDownMenu, ArrayList<Node> nodes, Map<String, JMenuItem> items, PathFinder newPath){
+        /* create buttons */
+        JButton pickStartButton = new JButton("Pick Start");
+        JButton pickTargetButton = new JButton("Pick Target");
+        JButton runButton = new JButton("Run");
+        createButtons(pickStartButton, pickTargetButton, runButton);
+        
+        /* update layered pane */
+        layeredPaneAddition(layeredPane, canvas, pickStartButton, pickTargetButton, runButton); // add the aspects to the layered pane
+        
+        /* button functions */
+        pickTarget(pickTargetButton, dropDownMenu, nodes, items);
+        pickStart(pickStartButton, dropDownMenu, nodes, items);
+        run(runButton, newPath);
+    }
+    /**
+     * This methods role is to call the methods that determin the visuals of the buttons on the canvas. 
+     * Made it's own method for easier orginisation
+     * @param
+     *      pickStartButton, pickTargetButton, runButton - all JButton objects.
+     * 
+     * @return void (nothing)
+     */
+    private static void createButtons(JButton pickStartButton, JButton pickTargetButton, JButton runButton){
+        setButtonBackgroundColor(pickStartButton, pickTargetButton, runButton);
+        setButtonForegroundColor(pickStartButton, pickTargetButton, runButton); 
+        setButtonBounds(pickStartButton, pickTargetButton, runButton);
+    }
+    /**
+     * This methods role is to update / set the background (main) color of the buttons
+     * It calls core methods to do so for each button
+     * @param
+     *      pickStartButton, pickTargetButton, runButton - all JButton objects.
+     * 
+     * @return void (nothing)
+     */
+    private static void setButtonBackgroundColor(JButton pickStartButton, JButton pickTargetButton, JButton runButton){
+        pickStartButton.setBackground(Color.DARK_GRAY);
+        pickTargetButton.setBackground(Color.DARK_GRAY);
+        runButton.setBackground(Color.DARK_GRAY);
+    }
+    /**
+     * This methods role is to update / set the foreground (text) color of the buttons
+     * It calls core methods to do so for each button
+     * @param
+     *      pickStartButton, pickTargetButton, runButton - all JButton objects.
+     * 
+     * @return void (nothing)
+     */
+    private static void setButtonForegroundColor(JButton pickStartButton, JButton pickTargetButton, JButton runButton){
+        pickStartButton.setForeground(Color.WHITE); 
+        pickTargetButton.setForeground(Color.WHITE);
+        runButton.setForeground(Color.WHITE); 
+    }
+    /**
+     * This methods role is to update / set the bounds (location and size) of the buttons
+     * It calls core methods to do so for each button
+     * @param
+     *      pickStartButton, pickTargetButton, runButton - all JButton objects.
+     * 
+     * @return void (nothing)
+     */
+    private static void setButtonBounds(JButton pickStartButton, JButton pickTargetButton, JButton runButton){
+        /* constant values */
+        final int buttonX = 50;
+        final int startButtonY = 50;
+        final int buttonSizeX = 120;
+        final int buttonSizeY = 40;
+        /* update methods */
+        pickStartButton.setBounds(buttonX, startButtonY, buttonSizeX, buttonSizeY); 
+        pickTargetButton.setBounds(buttonX, startButtonY + 60, buttonSizeX, buttonSizeY);
+        runButton.setBounds(buttonX, startButtonY + 120 , buttonSizeX, buttonSizeY);
+    }
+    private static void layeredPaneAddition(JLayeredPane layeredPane, PanelCanvas canvas, JButton pickStartButton, JButton pickTargetButton, JButton runButton){
+        layeredPane.add(canvas, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(pickStartButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(pickTargetButton, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(runButton, JLayeredPane.PALETTE_LAYER);
+    }
+    
+    
     private static void defaultGraph(ArrayList<Node> nodes, Graph graph){
 
         Node zero = new Node(0, 670, 190);
@@ -95,7 +175,7 @@ public class main
 
         zero.addDestination(one, edgeDistanceCalc(zero,one));
         zero.addDestination(two, edgeDistanceCalc(zero,two));
-        zero.addDestination(two, edgeDistanceCalc(zero,three));
+        zero.addDestination(three , edgeDistanceCalc(zero,three));
         one.addDestination(two, edgeDistanceCalc(one,two));
         one.addDestination(three, edgeDistanceCalc(one,three));
         two.addDestination(three, edgeDistanceCalc(two,three));
@@ -107,6 +187,7 @@ public class main
             graph.addNode(nodes.get(x));
         }
     }
+    
 
     private static int edgeDistanceCalc(Node start, Node target){
         int x = start.getX() - target.getX();
@@ -119,14 +200,7 @@ public class main
         pickStartButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    boolean menuVisible = dropDownMenu.isVisible();
-                    if(menuVisible){
-                        dropDownMenu.setVisible(false);
-                        //System.out.println("test");
-                    } else if(!menuVisible){
-                        
-                        dropDownMenu.removeAll();
-                    }
+                    updateDropDownVisibility(dropDownMenu);
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
                         String name = ("item"+x);
@@ -140,10 +214,10 @@ public class main
                             });
                     }
                     dropDownMenu.show(
-                            pickStartButton, 
-                            0, 
-                            pickStartButton.getHeight()
-                        );
+                        pickStartButton, 
+                        0, 
+                        pickStartButton.getHeight()
+                    );
                 }
             });
     }
@@ -152,15 +226,7 @@ public class main
         pickTargetButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    
-                    boolean menuVisible = dropDownMenu.isVisible();
-                    if(menuVisible){
-                        dropDownMenu.setVisible(false);
-                        //System.out.println("test");
-                    } else if(!menuVisible){
-                        
-                        dropDownMenu.removeAll();
-                    }
+                    updateDropDownVisibility(dropDownMenu);
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
                         String name = ("item"+x);
@@ -174,14 +240,23 @@ public class main
                             });
                     }
                     dropDownMenu.show(
-                            pickTargetButton, 
-                            0, 
-                            pickTargetButton.getHeight()
-                        );
+                        pickTargetButton, 
+                        0, 
+                        pickTargetButton.getHeight()
+                    );
                 }
             });
     }
 
+    private static void updateDropDownVisibility(JPopupMenu dropDownMenu){
+        boolean menuVisible = dropDownMenu.isVisible();
+        if(menuVisible){
+            dropDownMenu.setVisible(false);
+            //System.out.println("test");
+        } else if(!menuVisible){
+            dropDownMenu.removeAll();
+        }
+    }
     private static void run(JButton runButton, PathFinder newPath){ //# can't run twice
 
         runButton.addActionListener(new ActionListener(){
@@ -190,5 +265,31 @@ public class main
                     newPath.runAlgorithm(start, target);
                 }
             });
+    }
+    /**
+     * Check if node has been clicked
+     */
+    private static void nodeClicked(int mouseX, int mouseY, ArrayList<Node> nodes){
+        for (int x=0;x<nodes.size();x++){
+            Node currentNode = nodes.get(x);
+            int nodeX = currentNode.getX();
+            int nodeY = currentNode.getY();
+            int nodeRadius = currentNode.getRadius();
+            double mousePosition = Math.hypot(mouseX, mouseY);
+            if(mousePosition < nodeX + nodeRadius && mousePosition < nodeY + nodeRadius){
+
+            }
+            //double nodeArea = currentNode.getRadius(); currentNode.getX(), currentNode.getY();
+        }
+    }
+
+    /**
+     * Check if node has been clicked
+     */
+    private static void resetNodeColors(ArrayList<Node> nodes){ //# doesn't work
+        for(int x=0;x<nodes.size();x++){
+            Node currentNode = nodes.get(x);
+            currentNode.setColor(Color.DARK_GRAY);
+        }
     }
 }

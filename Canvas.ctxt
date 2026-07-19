@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.target=Canvas
-comment0.text=\n\ Canvas\ for\ the\ graphics\n\n\ @author\ Sol\ prebble\n\ @version\ 11/6/26\n
-comment1.params=graph
-comment1.target=Canvas(Graph)
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Canvas\n
-comment2.params=g
-comment2.target=void\ paint(java.awt.Graphics)
-numComments=3
