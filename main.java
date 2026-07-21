@@ -47,12 +47,9 @@ public class main
         /* canvas */
         canvas.setBounds(0,0,800,500);
 
-            
-        
 
         /* Layered Pane */
         
-
         window.add(layeredPane);
 
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -149,6 +146,16 @@ public class main
         pickTargetButton.setBounds(buttonX, startButtonY + 60, buttonSizeX, buttonSizeY);
         runButton.setBounds(buttonX, startButtonY + 120 , buttonSizeX, buttonSizeY);
     }
+    /**
+     * This methods role is to update / set the bounds (location and size) of the buttons
+     * It calls core methods to do so for each button
+     * @param
+     *      layeredPane - the object that allows us to change the depth of content on the canvas
+     *      canvas - Where everythig is drawn
+     *      pickStartButton, pickTargetButton, runButton - all JButton objects.
+     * 
+     * @return void (nothing)
+     */
     private static void layeredPaneAddition(JLayeredPane layeredPane, PanelCanvas canvas, JButton pickStartButton, JButton pickTargetButton, JButton runButton){
         layeredPane.add(canvas, JLayeredPane.DEFAULT_LAYER);
         layeredPane.add(pickStartButton, JLayeredPane.PALETTE_LAYER);
@@ -156,7 +163,15 @@ public class main
         layeredPane.add(runButton, JLayeredPane.PALETTE_LAYER);
     }
     
-    
+    /**
+     * This method is used as a default graph for the algorithm
+     * @param
+     *      nodes - the arraylist collection of every node
+     *      graph - an object of the custom class Graph. It is essentailly a map of all the nodes
+     *      
+     * @return
+     *      void (nothing)
+     */
     private static void defaultGraph(ArrayList<Node> nodes, Graph graph){
 
         Node zero = new Node(0, 670, 190);
@@ -188,7 +203,7 @@ public class main
         }
     }
     
-
+    
     private static int edgeDistanceCalc(Node start, Node target){
         int x = start.getX() - target.getX();
         int y = start.getY() - target.getY();
