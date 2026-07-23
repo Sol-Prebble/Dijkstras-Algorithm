@@ -14,6 +14,7 @@ public class main
 {
     private static Node start;
     private static Node target;
+    private static Map<String, Color> colorPalette;
     public main(ArrayList<Node> nodes){
         resetNodeColors(nodes);
     }
@@ -23,6 +24,7 @@ public class main
      */
     public static void main(String[] args){
         ArrayList<Node> nodes = new ArrayList<>(); // arraylist for all of the nodes in the graph
+        colorPalette = darkPalette();
 
         //new main(nodes);
 
@@ -30,7 +32,7 @@ public class main
 
         defaultGraph(nodes, graph);
 
-        PanelCanvas canvas = new PanelCanvas(graph);
+        PanelCanvas canvas = new PanelCanvas(graph, colorPalette);
         PathFinder newPath = new PathFinder(graph, canvas);
 
         /* drop down menu's */
@@ -56,6 +58,48 @@ public class main
         window.setSize(800,500);
         window.toFront();
         window.setVisible(true);
+    }
+    private static Map<String, Color> darkPalette(){
+        Map<String, Color> darkPalette = new HashMap<>();
+        
+        Color background = Color.BLACK;
+        Color nodeDefault = Color.DARK_GRAY;
+        Color nodeText = Color.WHITE;
+        Color selected = Color.MAGENTA;
+        Color path = Color.CYAN;
+        Color buttonBackground = Color.DARK_GRAY;
+        Color buttonText = Color.WHITE;
+        
+        darkPalette.put("background", background);
+        darkPalette.put("nodeDefault", nodeDefault);
+        darkPalette.put("nodeText", nodeText);
+        darkPalette.put("selected", selected);
+        darkPalette.put("path", path);
+        darkPalette.put("buttonBackground", buttonBackground);
+        darkPalette.put("buttonText", buttonText);
+        
+        return(darkPalette);
+    }
+    private static Map<String, Color> defaultPalette(){
+        
+        Map<String, Color> defaultPalette = new HashMap<>();
+        
+        Color background = Color.GRAY;
+        Color nodeDefault = Color.LIGHT_GRAY;
+        Color nodeText = Color.WHITE;
+        Color selected = Color.YELLOW;
+        Color path = Color.GREEN;
+        Color buttonBackground = Color.DARK_GRAY;
+        Color buttonText = Color.WHITE;
+        
+        defaultPalette.put("background", background);
+        defaultPalette.put("nodeDefault", nodeDefault);
+        defaultPalette.put("nodeText", nodeText);
+        defaultPalette.put("selected", selected);
+        defaultPalette.put("path", path);
+        defaultPalette.put("buttonBackground", buttonBackground);
+        defaultPalette.put("buttonText", buttonText);
+        return(defaultPalette);
     }
     /**
      * Button methods
@@ -86,7 +130,7 @@ public class main
         /* button functions */
         pickTarget(pickTargetButton, dropDownMenu, nodes, items);
         pickStart(pickStartButton, dropDownMenu, nodes, items);
-        run(runButton, newPath);
+        run(runButton, newPath, colorPalette);
     }
     /**
      * This methods role is to call the methods that determin the visuals of the buttons on the canvas. 
@@ -97,8 +141,8 @@ public class main
      * @return void (nothing)
      */
     private static void createButtons(JButton pickStartButton, JButton pickTargetButton, JButton runButton){
-        setButtonBackgroundColor(pickStartButton, pickTargetButton, runButton);
-        setButtonForegroundColor(pickStartButton, pickTargetButton, runButton); 
+        setButtonBackgroundColor(colorPalette.get("buttonBackground"), pickStartButton, pickTargetButton, runButton);
+        setButtonForegroundColor(colorPalette.get("buttonText"),pickStartButton, pickTargetButton, runButton); 
         setButtonBounds(pickStartButton, pickTargetButton, runButton);
     }
     /**
@@ -109,10 +153,10 @@ public class main
      * 
      * @return void (nothing)
      */
-    private static void setButtonBackgroundColor(JButton pickStartButton, JButton pickTargetButton, JButton runButton){
-        pickStartButton.setBackground(Color.DARK_GRAY);
-        pickTargetButton.setBackground(Color.DARK_GRAY);
-        runButton.setBackground(Color.DARK_GRAY);
+    private static void setButtonBackgroundColor(Color backgroundColor, JButton pickStartButton, JButton pickTargetButton, JButton runButton){
+        pickStartButton.setBackground(backgroundColor);
+        pickTargetButton.setBackground(backgroundColor);
+        runButton.setBackground(backgroundColor);
     }
     /**
      * This methods role is to update / set the foreground (text) color of the buttons
@@ -122,10 +166,10 @@ public class main
      * 
      * @return void (nothing)
      */
-    private static void setButtonForegroundColor(JButton pickStartButton, JButton pickTargetButton, JButton runButton){
-        pickStartButton.setForeground(Color.WHITE); 
-        pickTargetButton.setForeground(Color.WHITE);
-        runButton.setForeground(Color.WHITE); 
+    private static void setButtonForegroundColor(Color foregroundColor, JButton pickStartButton, JButton pickTargetButton, JButton runButton){
+        pickStartButton.setForeground(foregroundColor); 
+        pickTargetButton.setForeground(foregroundColor);
+        runButton.setForeground(foregroundColor); 
     }
     /**
      * This methods role is to update / set the bounds (location and size) of the buttons
@@ -174,12 +218,12 @@ public class main
      */
     private static void defaultGraph(ArrayList<Node> nodes, Graph graph){
 
-        Node zero = new Node(0, 670, 190);
-        Node one = new Node(1, 500, 400);
-        Node two = new Node(2, 600, 100);
-        Node three = new Node(3, 50, 300);
-        Node four = new Node(4, 300, 320);
-        Node five = new Node(5, 180, 150);
+        Node zero = new Node(0, 670, 190, colorPalette.get("nodeDefault"));
+        Node one = new Node(1, 500, 400, colorPalette.get("nodeDefault"));
+        Node two = new Node(2, 600, 100, colorPalette.get("nodeDefault"));
+        Node three = new Node(3, 50, 300, colorPalette.get("nodeDefault"));
+        Node four = new Node(4, 300, 320, colorPalette.get("nodeDefault"));
+        Node five = new Node(5, 180, 150, colorPalette.get("nodeDefault"));
 
         nodes.add(zero);
         nodes.add(one);
@@ -272,12 +316,12 @@ public class main
             dropDownMenu.removeAll();
         }
     }
-    private static void run(JButton runButton, PathFinder newPath){ //# can't run twice
+    private static void run(JButton runButton, PathFinder newPath, Map<String, Color> colorPalette){ //# can't run twice
 
         runButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    newPath.runAlgorithm(start, target);
+                    newPath.runAlgorithm(start, target, colorPalette);
                 }
             });
     }

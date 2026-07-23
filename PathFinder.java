@@ -1,4 +1,6 @@
 import java.awt.Color;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * This class finds the shortest path 
  *
@@ -10,6 +12,7 @@ public class PathFinder
     private Graph graph; // graph of nodes
     private Queue nodeOrder = new Queue(); // contains each
     private PanelCanvas canvas;
+    private Map<String, Color> colorPalette;
     public PathFinder(Graph graph, PanelCanvas canvas){
         this.graph = graph;
         this.canvas = canvas;
@@ -21,14 +24,15 @@ public class PathFinder
      * https://www.geeksforgeeks.org/java/thread-sleep-method-in-java-with-examples/
      * 
      */
-    public void runAlgorithm(Node startNode, Node endNode){
+    public void runAlgorithm(Node startNode, Node endNode, Map<String, Color> colorPalette){
+        this.colorPalette = colorPalette;
         new Thread(() -> {
                     nodeOrder.enqueue(startNode);
                     startNode.setDistanceFromStart(0);
                     while(!nodeOrder.isEmpty()){
                         Node currentNode = nodeOrder.dequeue();
                         if(!currentNode.getVisited()){
-                            recolorNode(currentNode, Color.YELLOW);
+                            recolorNode(currentNode, colorPalette.get("selected"));
                             threadSleep();
                             findShortestLocalPath(currentNode);
                             threadSleep();
@@ -44,7 +48,7 @@ public class PathFinder
         Node returnNode = null;
         for(int x=0;x< currentNode.getEdges().size(); x++){
             Edge currentEdge = currentNode.getEdges().get(x);
-            recolorEdge(currentEdge, Color.YELLOW);
+            recolorEdge(currentEdge, colorPalette.get("selected"));
             threadSleep();
             Node targetNode = currentEdge.getTargetNode();
             int proposedDistance = currentNode.getDistanceFromStart() + currentEdge.getDistance();
@@ -55,10 +59,10 @@ public class PathFinder
                 targetNode.setPreviousEdge(currentEdge);
             }
             threadSleep();
-            recolorEdge(currentEdge, Color.LIGHT_GRAY);
+            recolorEdge(currentEdge, colorPalette.get("defualt"));
             returnNode = targetNode;
         }
-        recolorNode(currentNode, Color.LIGHT_GRAY);
+        recolorNode(currentNode, colorPalette.get("defualt"));
         currentNode.setVisited(true);
     }
 
@@ -67,9 +71,9 @@ public class PathFinder
         while(currentNode!=null){
             Edge currentEdge = currentNode.getPreviousEdge();
             System.out.println(currentNode.getName());
-            recolorNode(currentNode, Color.GREEN);
+            recolorNode(currentNode, colorPalette.get("path"));
             if(currentEdge != null){
-                recolorEdge(currentEdge, Color.GREEN);
+                recolorEdge(currentEdge, colorPalette.get("path"));
             }
             
             path.push(currentNode);
@@ -89,7 +93,7 @@ public class PathFinder
 
     public void threadSleep(){
         try{
-            Thread.sleep(100); // pause the algorithm for 750ms
+            Thread.sleep(400); // pause the algorithm for 750ms
         } catch (InterruptedException e){
             e.printStackTrace();
         }

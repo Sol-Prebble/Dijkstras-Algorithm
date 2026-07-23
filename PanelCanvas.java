@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 /**
  * Write a description of class PanelCanvas here.
  *
@@ -10,18 +12,20 @@ import java.util.ArrayList;
 public class PanelCanvas extends JPanel 
 {
     private Graph graph;
+    private Map<String, Color> colorPalette;
     /**
      * Constructor for objects of class PanelCanvas
      */
-    public PanelCanvas(Graph graph)
+    public PanelCanvas(Graph graph, Map<String, Color> colorPalette)
     {
         this.graph = graph;
+        this.colorPalette = colorPalette;
     }
 
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        this.setBackground(Color.GRAY);
+        this.setBackground(colorPalette.get("background"));
         for(Node n : graph.getAllNodes()){
             /* edges */
             ArrayList<Edge> currentEdges = n.getEdges();
@@ -36,7 +40,7 @@ public class PanelCanvas extends JPanel
               }
             
             /* nodes */
-            g.setColor(n.getColor());
+            g.setColor(colorPalette.get("nodeDefault"));
 
             g.fillOval(n.getX(),n.getY(),n.getRadius(),n.getRadius());
             
@@ -56,7 +60,7 @@ public class PanelCanvas extends JPanel
             int textAscent = fm.getAscent();
             int centreY = n.getY() + (n.getRadius() - textHeight) / 2 + textAscent;
 
-            g.setColor(Color.WHITE);
+            g.setColor(colorPalette.get("nodeText"));
             g.drawString(text, centreX, centreY);
             
         }
