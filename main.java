@@ -66,6 +66,7 @@ public class main
         Color nodeDefault = Color.DARK_GRAY;
         Color nodeText = Color.WHITE;
         Color selected = Color.MAGENTA;
+        Color checked = Color.WHITE;
         Color path = Color.CYAN;
         Color buttonBackground = Color.DARK_GRAY;
         Color buttonText = Color.WHITE;
@@ -74,6 +75,7 @@ public class main
         darkPalette.put("nodeDefault", nodeDefault);
         darkPalette.put("nodeText", nodeText);
         darkPalette.put("selected", selected);
+        darkPalette.put("checked", checked);
         darkPalette.put("path", path);
         darkPalette.put("buttonBackground", buttonBackground);
         darkPalette.put("buttonText", buttonText);
@@ -88,6 +90,7 @@ public class main
         Color nodeDefault = Color.LIGHT_GRAY;
         Color nodeText = Color.WHITE;
         Color selected = Color.YELLOW;
+        Color checked = Color.WHITE.darker();
         Color path = Color.GREEN;
         Color buttonBackground = Color.DARK_GRAY;
         Color buttonText = Color.WHITE;
@@ -96,6 +99,7 @@ public class main
         defaultPalette.put("nodeDefault", nodeDefault);
         defaultPalette.put("nodeText", nodeText);
         defaultPalette.put("selected", selected);
+        defaultPalette.put("checked", checked);
         defaultPalette.put("path", path);
         defaultPalette.put("buttonBackground", buttonBackground);
         defaultPalette.put("buttonText", buttonText);
@@ -324,22 +328,6 @@ public class main
                     newPath.runAlgorithm(start, target, colorPalette);
                 }
             });
-    }
-    /**
-     * Check if node has been clicked
-     */
-    private static void nodeClicked(int mouseX, int mouseY, ArrayList<Node> nodes){
-        for (int x=0;x<nodes.size();x++){
-            Node currentNode = nodes.get(x);
-            int nodeX = currentNode.getX();
-            int nodeY = currentNode.getY();
-            int nodeRadius = currentNode.getRadius();
-            double mousePosition = Math.hypot(mouseX, mouseY);
-            if(mousePosition < nodeX + nodeRadius && mousePosition < nodeY + nodeRadius){
-
-            }
-            //double nodeArea = currentNode.getRadius(); currentNode.getX(), currentNode.getY();
-        }
     }
 
     /**

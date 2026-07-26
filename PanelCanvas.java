@@ -27,6 +27,8 @@ public class PanelCanvas extends JPanel
         super.paintComponent(g);
         this.setBackground(colorPalette.get("background"));
         for(Node n : graph.getAllNodes()){
+            
+            n.setColor(n.getColor());
             /* edges */
             ArrayList<Edge> currentEdges = n.getEdges();
             for(int e = 0; e < currentEdges.size(); e++){

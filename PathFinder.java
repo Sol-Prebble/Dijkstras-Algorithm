@@ -32,7 +32,7 @@ public class PathFinder
                     while(!nodeOrder.isEmpty()){
                         Node currentNode = nodeOrder.dequeue();
                         if(!currentNode.getVisited()){
-                            recolorNode(currentNode, colorPalette.get("selected"));
+                            
                             threadSleep();
                             findShortestLocalPath(currentNode);
                             threadSleep();
@@ -44,7 +44,7 @@ public class PathFinder
     }
 
     public void findShortestLocalPath(Node currentNode){
-
+        recolorNode(currentNode, colorPalette.get("selected"));
         Node returnNode = null;
         for(int x=0;x< currentNode.getEdges().size(); x++){
             Edge currentEdge = currentNode.getEdges().get(x);
@@ -59,14 +59,14 @@ public class PathFinder
                 targetNode.setPreviousEdge(currentEdge);
             }
             threadSleep();
-            recolorEdge(currentEdge, colorPalette.get("defualt"));
+            recolorEdge(currentEdge, colorPalette.get("checked"));
             returnNode = targetNode;
         }
-        recolorNode(currentNode, colorPalette.get("defualt"));
+        recolorNode(currentNode, colorPalette.get("checked"));
         currentNode.setVisited(true);
     }
 
-    public Stack finalPath(Node startNode, Node currentNode){ //# last edge doesn't get changed
+    public Stack finalPath(Node startNode, Node currentNode){
         Stack path = new Stack();
         while(currentNode!=null){
             Edge currentEdge = currentNode.getPreviousEdge();
@@ -100,6 +100,7 @@ public class PathFinder
     }
 
     public void recolorNode(Node currentNode, Color newColor){
+        System.out.println(newColor);
         currentNode.setColor(newColor);
         canvas.repaint();
     }
