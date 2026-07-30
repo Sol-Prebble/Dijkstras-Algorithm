@@ -15,10 +15,6 @@ public class Edge
         this.targetNode = targetNode;
         this.distance = distance;
     }
-    public Edge(Node targetNode){
-        this.targetNode = targetNode;
-        this.distance = (int)(Math.random() * 11); // 0 to 10
-    }
     
     /* getters */
     public Node getTargetNode(){

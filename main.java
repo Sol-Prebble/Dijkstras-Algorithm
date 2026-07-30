@@ -26,14 +26,13 @@ public class main
 
         /* Graph */
         GraphBuilder graphBuilder = new GraphBuilder(theme.getPalette());
-        System.out.println("graph builder call test");
         graph = graphBuilder.getGraph();
         nodes = graph.getAllNodes();
         
-        PanelCanvas canvas = new PanelCanvas(nodes, theme);
+        PanelCanvas canvas = new PanelCanvas(nodes, theme.getPalette());
         PathFinder newPath = new PathFinder(graph, canvas);
         
-        ControlPanel controlPanel = new ControlPanel(theme, canvas, nodes, newPath, graph);
+        ControlPanel controlPanel = new ControlPanel(theme, canvas, nodes, newPath, graphBuilder);
         JFrame window = new JFrame("Dijkstra's algorithm");
         
         

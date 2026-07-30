@@ -56,11 +56,11 @@ public class GraphBuilder
         nodes.add(four);
         nodes.add(five);
         
+        
         for(int x = 0; x < nodes.size(); x++){
             Node currentNode = nodes.get(x);
             graph.addNode(currentNode);
         }   
-        
         /* edges */
         for(Node n : graph.getAllNodes()){
             ArrayList<Edge> currentEdges = n.getEdges();
@@ -69,7 +69,7 @@ public class GraphBuilder
                 currentEdge.setColor(colorPalette.get("edgeDefault"));
             }
         }
-
+        
         
         return graph;
     }
@@ -77,6 +77,14 @@ public class GraphBuilder
         int x = start.getX() - target.getX();
         int y = start.getY() - target.getY();
         return (int) Math.hypot(x, y);
+    }
+    public void resetGraph(Map<String, Color> colorPalette){
+        for(Node n : graph.getAllNodes()){
+            n.resetNode(colorPalette.get("nodeDefault"));
+            for(Edge e : n.getEdges()){
+                e.setColor(colorPalette.get("edgeDefault"));
+            }
+        }
     }
     /* Getters */
     public Graph getGraph(){

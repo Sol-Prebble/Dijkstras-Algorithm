@@ -44,7 +44,6 @@ public class PathFinder
     }
 
     public void findShortestLocalPath(Node currentNode){
-        System.out.println("find local path test");
         recolorNode(currentNode, colorPalette.get("selected"));
         Node returnNode = null;
         for(int x=0;x< currentNode.getEdges().size(); x++){
@@ -97,7 +96,7 @@ public class PathFinder
 
     public void threadSleep(){
         try{
-            Thread.sleep(400); // pause the algorithm for 200ms
+            Thread.sleep(100); // pause the algorithm for 200ms
         } catch (InterruptedException e){
             e.printStackTrace();
         }

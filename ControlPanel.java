@@ -26,7 +26,7 @@ public class ControlPanel
     /**
      * Constructor for objects of class ControlPanel
      */
-    public ControlPanel(Theme theme, PanelCanvas canvas, ArrayList<Node> nodes, PathFinder newPath, Graph graph)
+    public ControlPanel(Theme theme, PanelCanvas canvas, ArrayList<Node> nodes, PathFinder newPath, GraphBuilder graphBuilder)
     {
         this.dropDownMenu = new JPopupMenu();
         this.colorPalette = theme.getPalette();
@@ -38,7 +38,7 @@ public class ControlPanel
         this.pickTargetButton = new JButton("Pick Target");
         this.runButton = new JButton("Run");
         this.resetButton = new JButton("RESET");
-        buttons(canvas, newPath, graph);
+        buttons(canvas, newPath, graphBuilder);
     }
     /* getters */
     public JLayeredPane getLayeredPane(){
@@ -61,7 +61,7 @@ public class ControlPanel
      * @return void (nothing)
      *      
      */
-    private void buttons(PanelCanvas canvas, PathFinder newPath, Graph graph){
+    private void buttons(PanelCanvas canvas, PathFinder newPath, GraphBuilder graphBuilder){
         createButtons();
         
         /* update layered pane */
@@ -71,7 +71,7 @@ public class ControlPanel
         pickStartButton();
         pickTargetButton();
         runButton(newPath);
-        resetButton(graph, nodes);
+        resetButton(graphBuilder, canvas, nodes);
     }
     /**
      * This methods role is to call the methods that determin the visuals of the buttons on the canvas. 
@@ -227,12 +227,14 @@ public class ControlPanel
                 }
             });
     }
-    private void resetButton(Graph graph, ArrayList<Node> nodes){
+    private void resetButton(GraphBuilder graphBuilder, PanelCanvas canvas, ArrayList<Node> nodes){
 
         resetButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    //setUpGraph(nodes); // to do next
+                    graphBuilder.resetGraph(colorPalette);
+                    PathFinder newPath = new PathFinder(graphBuilder.getGraph(), canvas);
+                    canvas.repaint();
                 }
             });
     }

@@ -15,8 +15,7 @@ public class Node{
     private int y;
     private int radius;
     private Color color; // node color
-    /* Constructors */
-    public Node(){}
+    /* Constructor */
     public Node(int name, int x, int y, Color color){
         this.name = name;
         this.edges = edges;
@@ -40,6 +39,18 @@ public class Node{
         reverse.setTwin(forwards);
         this.edges.add(forwards);
         destination.edges.add(reverse);
+    }
+    public void resetNode(Color color){
+        this.name = name;
+        this.edges = edges;
+        this.distanceFromStart = Integer.MAX_VALUE;
+        this.visited = false;
+        this.previous = null;
+        this.previousEdge = null;
+        this.x = x;
+        this.y = y;
+        this.radius = 50;
+        this.color = color;
     }
     
     /* Getters */

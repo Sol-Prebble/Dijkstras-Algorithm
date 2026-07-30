@@ -16,9 +16,9 @@ public class PanelCanvas extends JPanel
     /**
      * Constructor for objects of class PanelCanvas
      */
-    public PanelCanvas(ArrayList<Node> nodes, Theme theme)
+    public PanelCanvas(ArrayList<Node> nodes, Map<String, Color> colorPalette)
     {
-        this.colorPalette = theme.getPalette();
+        this.colorPalette = colorPalette;
         this.graph = new Graph(nodes);
         
         repaint();
