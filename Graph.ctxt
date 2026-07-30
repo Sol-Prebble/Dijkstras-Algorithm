@@ -1,5 +1,5 @@
 #BlueJ class context
-#Thu Jul 23 14:59:39 NZST 2026
+#Wed Jul 29 10:53:12 NZST 2026
 comment0.target=Graph
 comment0.text=\n Write a description of class Graph here.\n https\://www.w3schools.com/Java/java_hashmap.asp\n https\://stackoverflow.com/questions/1348199/what-is-the-difference-between-the-hashmap-and-map-objects-in-java\n @author (your name)\n @version (a version number or a date)\n
 comment1.params=nodes
@@ -9,6 +9,7 @@ comment3.params=node
 comment3.target=void addNode(Node)
 comment4.params=nodeName
 comment4.target=Node getNode(int)
+comment4.text=getters
 comment5.target=java.util.ArrayList getAllNodes()
 comment6.target=java.util.Map getMap()
 comment7.target=boolean isEmpty()

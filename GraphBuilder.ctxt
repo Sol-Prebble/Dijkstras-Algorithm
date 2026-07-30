@@ -1,0 +1,16 @@
+#BlueJ class context
+#Wed Jul 29 17:41:34 NZST 2026
+comment0.target=GraphBuilder
+comment0.text=\n Write a description of class GraphBuilder here.\n\n @author (your name)\n @version (a version number or a date)\n
+comment1.target=GraphBuilder()
+comment1.text=\n Constructor for objects of class GraphBuilder\n
+comment2.target=Graph defaultGraph()
+comment2.text=\n This method is used as a default graph for the algorithm\n @param\n      nodes - the arraylist collection of every node\n      graph - an object of the custom class Graph. It is essentailly a map of all the nodes\n       \= \n @return\n      void (nothing)\n
+comment3.params=start target
+comment3.target=int edgeDistanceCalc(Node, Node)
+comment4.target=Graph getGraph()
+comment4.text=Getters
+comment5.params=graph
+comment5.target=void setGraph(Graph)
+comment5.text=setters
+numComments=6

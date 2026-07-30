@@ -38,8 +38,8 @@ public class Graph
         this.map.put(newNodeName, graphNode);
         //System.out.println("this.map.put: "+newNode.getName());
     }
+    /* getters */
     public Node getNode(int nodeName){
-        System.out.println("graph.getNode()");
         String newNodeName = String.valueOf(nodeName); // convert char to string
         GraphNode graphNode = this.map.get(newNodeName);
         return(graphNode.getNode());
@@ -54,6 +54,7 @@ public class Graph
     public Map getMap(){
         return(this.map);
     }
+    
     public boolean isEmpty(){
         return(map.isEmpty());
     }

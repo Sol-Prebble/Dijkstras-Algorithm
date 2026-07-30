@@ -28,7 +28,7 @@ public class Node{
         this.radius = 50;
         this.color = Color.DARK_GRAY;
     }
-    public Node(int name, int x, int y, Color color){
+    public Node(int name, int x, int y){
         this.name = name;
         this.edges = edges;
         this.distanceFromStart = Integer.MAX_VALUE;
@@ -38,12 +38,18 @@ public class Node{
         this.x = x;
         this.y = y;
         this.radius = 50;
-        this.color = color;
     }
-    
-    public void addDestination(Node destination, int distanceToDestination){
-        Edge newEdge = new Edge(destination, distanceToDestination);
-        this.edges.add(newEdge);
+    /**
+     * Add an edge that goes from the currentNode to the target.
+     * But also an edge that goes from the target to the current node. To make it multi directional
+     */
+    public void addBidirectionalDestination(Node destination, int distanceToDestination){
+        Edge forwards = new Edge(destination, distanceToDestination);
+        Edge reverse = new Edge(this, distanceToDestination);
+        forwards.setTwin(reverse);
+        reverse.setTwin(forwards);
+        this.edges.add(forwards);
+        destination.edges.add(reverse);
     }
     
     /* Getters */

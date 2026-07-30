@@ -16,18 +16,19 @@ public class PanelCanvas extends JPanel
     /**
      * Constructor for objects of class PanelCanvas
      */
-    public PanelCanvas(Graph graph, Map<String, Color> colorPalette)
+    public PanelCanvas(ArrayList<Node> nodes, Theme theme)
     {
-        this.graph = graph;
-        this.colorPalette = colorPalette;
+        this.graph = setUpGraph(nodes);
+        this.colorPalette = theme.getPalette();
+        repaint();
     }
 
     @Override
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         this.setBackground(colorPalette.get("background"));
+        /* edges */
         for(Node n : graph.getAllNodes()){
-            /* edges */
             ArrayList<Edge> currentEdges = n.getEdges();
             for(int e = 0; e < currentEdges.size(); e++){
                 Edge currentEdge = currentEdges.get(e);
@@ -37,17 +38,18 @@ public class PanelCanvas extends JPanel
                 int targetNodeCentreX = currentEdge.getTargetNode().getX() + (n.getRadius() / 2);
                 int targetNodeCentreY = currentEdge.getTargetNode().getY() + (n.getRadius() / 2);
                 g.drawLine(startNodeCentreX, startNodeCentreY, targetNodeCentreX, targetNodeCentreY);
-              }
-            
-            /* nodes */
-            g.setColor(colorPalette.get("nodeDefault"));
-
+            }
+        }
+        /* Nodes */
+        for(Node n : graph.getAllNodes()){
+            /* node circle */
+            g.setColor(n.getColor());
             g.fillOval(n.getX(),n.getY(),n.getRadius(),n.getRadius());
             
             Font customFont = new Font("SansSerif", Font.BOLD, 18);
             g.setFont(customFont);
             
-            /* nodes */
+            /* text */
             String text = String.valueOf(n.getName());
             FontMetrics fm = g.getFontMetrics();
             
@@ -59,10 +61,21 @@ public class PanelCanvas extends JPanel
             int textHeight = fm.getHeight();
             int textAscent = fm.getAscent();
             int centreY = n.getY() + (n.getRadius() - textHeight) / 2 + textAscent;
-
-            g.setColor(colorPalette.get("nodeText"));
+            
+            if(n.getVisited()){
+                g.setColor(colorPalette.get("visitedText"));
+            } else {
+                g.setColor(colorPalette.get("text"));
+            }
+            
             g.drawString(text, centreX, centreY);
             
         }
     }
+    private Graph setUpGraph(ArrayList<Node> nodes){
+        GraphBuilder graphBuilder = new GraphBuilder();
+        this.graph = graphBuilder.getGraph();
+        return graph;
+    }
+    
 }

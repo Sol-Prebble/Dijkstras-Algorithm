@@ -32,7 +32,6 @@ public class PathFinder
                     while(!nodeOrder.isEmpty()){
                         Node currentNode = nodeOrder.dequeue();
                         if(!currentNode.getVisited()){
-                            recolorNode(currentNode, colorPalette.get("selected"));
                             threadSleep();
                             findShortestLocalPath(currentNode);
                             threadSleep();
@@ -44,7 +43,7 @@ public class PathFinder
     }
 
     public void findShortestLocalPath(Node currentNode){
-
+        recolorNode(currentNode, colorPalette.get("selected"));
         Node returnNode = null;
         for(int x=0;x< currentNode.getEdges().size(); x++){
             Edge currentEdge = currentNode.getEdges().get(x);
@@ -59,14 +58,14 @@ public class PathFinder
                 targetNode.setPreviousEdge(currentEdge);
             }
             threadSleep();
-            recolorEdge(currentEdge, colorPalette.get("defualt"));
+            recolorEdge(currentEdge, colorPalette.get("visited"));
             returnNode = targetNode;
         }
-        recolorNode(currentNode, colorPalette.get("defualt"));
+        recolorNode(currentNode, colorPalette.get("visited"));
         currentNode.setVisited(true);
     }
 
-    public Stack finalPath(Node startNode, Node currentNode){ //# last edge doesn't get changed
+    public Stack finalPath(Node startNode, Node currentNode){
         Stack path = new Stack();
         while(currentNode!=null){
             Edge currentEdge = currentNode.getPreviousEdge();
@@ -75,9 +74,9 @@ public class PathFinder
             if(currentEdge != null){
                 recolorEdge(currentEdge, colorPalette.get("path"));
             }
-            
             path.push(currentNode);
             currentNode = currentNode.getPrevious();
+            
         }
         printFinalPath(path);
         return path;
@@ -93,7 +92,7 @@ public class PathFinder
 
     public void threadSleep(){
         try{
-            Thread.sleep(400); // pause the algorithm for 750ms
+            Thread.sleep(0); // pause the algorithm for 750ms
         } catch (InterruptedException e){
             e.printStackTrace();
         }
@@ -105,7 +104,9 @@ public class PathFinder
     }
 
     public void recolorEdge(Edge currentEdge, Color newColor){
+        Edge twin = currentEdge.getTwin();
         currentEdge.setColor(newColor);
+        twin.setColor(newColor);
         canvas.repaint();
     }
 }

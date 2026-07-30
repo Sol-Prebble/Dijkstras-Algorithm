@@ -1,5 +1,5 @@
 #BlueJ class context
-#Thu Jul 23 14:59:23 NZST 2026
+#Tue Jul 28 19:36:39 NZST 2026
 comment0.target=Node
 comment0.text=\n This is the Node class\n It creates objects for each name structure inside the project\n
 comment1.target=Node()
@@ -30,10 +30,11 @@ comment22.params=newValue
 comment22.target=void setRadius(int)
 comment23.params=newColor
 comment23.target=void setColor(java.awt.Color)
-comment3.params=name x y color
-comment3.target=Node(int, int, int, java.awt.Color)
+comment3.params=name x y
+comment3.target=Node(int, int, int)
 comment4.params=destination distanceToDestination
-comment4.target=void addDestination(Node, int)
+comment4.target=void addBidirectionalDestination(Node, int)
+comment4.text=\n Add an edge that goes from the currentNode to the target.\n But also an edge that goes from the target to the current node. To make it multi directional\n
 comment5.target=java.util.ArrayList getEdges()
 comment5.text=Getters
 comment6.target=int getDistanceFromStart()
