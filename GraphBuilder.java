@@ -1,4 +1,5 @@
 import java.util.*;
+import java.awt.*;
 /**
  * Write a description of class GraphBuilder here.
  *
@@ -13,9 +14,9 @@ public class GraphBuilder
     /**
      * Constructor for objects of class GraphBuilder
      */
-    public GraphBuilder()
+    public GraphBuilder(Map<String, Color> colorPalette)
     {
-        this.graph = defaultGraph();
+        this.graph = defaultGraph(colorPalette);
     }
 
     /**
@@ -27,15 +28,16 @@ public class GraphBuilder
      * @return
      *      void (nothing)
      */
-    private Graph defaultGraph(){
+    private Graph defaultGraph(Map<String, Color> colorPalette){
         ArrayList<Node> nodes = new ArrayList<>();
+        Color nodeColor = colorPalette.get("nodeDefault");
         
-        Node zero = new Node(0, 670, 190);
-        Node one = new Node(1, 500, 400);
-        Node two = new Node(2, 600, 100);
-        Node three = new Node(3, 50, 300);
-        Node four = new Node(4, 300, 320);
-        Node five = new Node(5, 180, 150);
+        Node zero = new Node(0, 670, 190, nodeColor);
+        Node one = new Node(1, 500, 400, nodeColor);
+        Node two = new Node(2, 600, 100, nodeColor);
+        Node three = new Node(3, 50, 300, nodeColor);
+        Node four = new Node(4, 300, 320, nodeColor);
+        Node five = new Node(5, 180, 150, nodeColor);
         
         zero.addBidirectionalDestination(one, edgeDistanceCalc(zero,one));
         zero.addBidirectionalDestination(two, edgeDistanceCalc(zero,two));
@@ -54,10 +56,18 @@ public class GraphBuilder
         nodes.add(four);
         nodes.add(five);
         
-        
+        /* edges */
+        for(Node n : graph.getAllNodes()){
+            ArrayList<Edge> currentEdges = n.getEdges();
+            for(int e = 0; e < currentEdges.size(); e++){
+                Edge currentEdge = currentEdges.get(e);
+                currentEdge.setColor(colorPalette.get("edgeDefault"));
+            }
+        }
 
         for(int x = 0; x < nodes.size(); x++){
-            graph.addNode(nodes.get(x));
+            Node currentNode = nodes.get(x);
+            graph.addNode(currentNode);
         }   
         return graph;
     }

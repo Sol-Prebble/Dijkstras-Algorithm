@@ -1,5 +1,5 @@
 #BlueJ class context
-#Wed Jul 29 17:51:07 NZST 2026
+#Thu Jul 30 13:10:10 NZST 2026
 comment0.target=PathFinder
 comment0.text=\n This class finds the shortest path \n\n @Sol Prebble\n @5/6/26\n
 comment1.params=graph canvas
@@ -16,6 +16,7 @@ comment5.target=void printFinalPath(Stack)
 comment6.target=void threadSleep()
 comment7.params=currentNode newColor
 comment7.target=void recolorNode(Node, java.awt.Color)
+comment7.text=\n EDT thread alignment\n To sync the recolor methods with the algorithm\n      https\://codingtechroom.com/question/invoke-and-wait-swingutilities\n To make the canvas update imediatly\n https\://codingtechroom.com/question/jcomponent-paintimmediately-java-swing\n
 comment8.params=currentEdge newColor
 comment8.target=void recolorEdge(Edge, java.awt.Color)
 numComments=9

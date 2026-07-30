@@ -18,8 +18,9 @@ public class PanelCanvas extends JPanel
      */
     public PanelCanvas(ArrayList<Node> nodes, Theme theme)
     {
-        this.graph = setUpGraph(nodes);
         this.colorPalette = theme.getPalette();
+        this.graph = new Graph(nodes);
+        
         repaint();
     }
 
@@ -73,7 +74,7 @@ public class PanelCanvas extends JPanel
         }
     }
     private Graph setUpGraph(ArrayList<Node> nodes){
-        GraphBuilder graphBuilder = new GraphBuilder();
+        GraphBuilder graphBuilder = new GraphBuilder(colorPalette);
         this.graph = graphBuilder.getGraph();
         return graph;
     }

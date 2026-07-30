@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.*;
 /**
  * This class finds the shortest path 
  *
@@ -43,6 +44,7 @@ public class PathFinder
     }
 
     public void findShortestLocalPath(Node currentNode){
+        System.out.println("find local path test");
         recolorNode(currentNode, colorPalette.get("selected"));
         Node returnNode = null;
         for(int x=0;x< currentNode.getEdges().size(); x++){
@@ -76,7 +78,7 @@ public class PathFinder
             }
             path.push(currentNode);
             currentNode = currentNode.getPrevious();
-            
+
         }
         printFinalPath(path);
         return path;
@@ -92,21 +94,41 @@ public class PathFinder
 
     public void threadSleep(){
         try{
-            Thread.sleep(0); // pause the algorithm for 750ms
+            Thread.sleep(400); // pause the algorithm for 200ms
         } catch (InterruptedException e){
             e.printStackTrace();
         }
     }
 
+    /**
+     * EDT thread alignment
+     * To sync the recolor methods with the algorithm
+     *      https://codingtechroom.com/question/invoke-and-wait-swingutilities
+     * To make the canvas update imediatly
+     * https://codingtechroom.com/question/jcomponent-paintimmediately-java-swing
+     */
     public void recolorNode(Node currentNode, Color newColor){
-        currentNode.setColor(newColor);
-        canvas.repaint();
+        try{
+            SwingUtilities.invokeAndWait(()-> {
+                        currentNode.setColor(newColor);
+                        canvas.paintImmediately(canvas.getVisibleRect());
+                });           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void recolorEdge(Edge currentEdge, Color newColor){
         Edge twin = currentEdge.getTwin();
-        currentEdge.setColor(newColor);
-        twin.setColor(newColor);
-        canvas.repaint();
+        try{
+            SwingUtilities.invokeAndWait(()-> {
+                        currentEdge.setColor(newColor);
+                        twin.setColor(newColor);
+                        canvas.paintImmediately(canvas.getVisibleRect());
+                });           
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

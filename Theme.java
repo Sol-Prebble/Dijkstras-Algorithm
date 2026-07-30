@@ -16,7 +16,7 @@ public class Theme
     {
         this.palette = darkPalette();
     }
-    private static void setUpColors(Graph graph, Map<String, Color> palette){
+    private void setUpColors(Graph graph, Map<String, Color> palette){
         for(Node currentNode : graph.getAllNodes()){
             currentNode.setColor(palette.get("nodeDefault"));
             ArrayList<Edge> currentEdges = currentNode.getEdges();
@@ -26,7 +26,7 @@ public class Theme
             }
         }
     }
-    private static Map<String, Color> darkPalette(){
+    private Map<String, Color> darkPalette(){
         Map<String, Color> darkPalette = new HashMap<>();
         
         Color background = Color.BLACK;
@@ -53,7 +53,7 @@ public class Theme
         
         return(darkPalette);
     }
-    private static Map<String, Color> defaultPalette(){
+    private Map<String, Color> defaultPalette(){
         
         Map<String, Color> defaultPalette = new HashMap<>();
         

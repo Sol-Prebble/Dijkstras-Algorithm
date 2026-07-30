@@ -17,18 +17,7 @@ public class Node{
     private Color color; // node color
     /* Constructors */
     public Node(){}
-    public Node (int name){
-        this.name = name;
-        this.distanceFromStart = Integer.MAX_VALUE;
-        this.visited = false;
-        this.previous = null;
-        this.previousEdge = null;
-        this.x = (int)(Math.random() * 600);
-        this.y = (int)(Math.random() * 300);
-        this.radius = 50;
-        this.color = Color.DARK_GRAY;
-    }
-    public Node(int name, int x, int y){
+    public Node(int name, int x, int y, Color color){
         this.name = name;
         this.edges = edges;
         this.distanceFromStart = Integer.MAX_VALUE;
@@ -38,6 +27,7 @@ public class Node{
         this.x = x;
         this.y = y;
         this.radius = 50;
+        this.color = color;
     }
     /**
      * Add an edge that goes from the currentNode to the target.

@@ -10,7 +10,7 @@ import java.awt.*;
 public class main
 {
     private static Node start;
-    private static Node target;
+    private static Node target; 
     private static Map<String, Color> colorPalette;
     private static Graph graph;
 
@@ -25,7 +25,8 @@ public class main
         // colorPalette = theme.getPalette();
 
         /* Graph */
-        GraphBuilder graphBuilder = new GraphBuilder();
+        GraphBuilder graphBuilder = new GraphBuilder(theme.getPalette());
+        System.out.println("graph builder call test");
         graph = graphBuilder.getGraph();
         nodes = graph.getAllNodes();
         

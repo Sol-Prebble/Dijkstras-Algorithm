@@ -1,5 +1,5 @@
 #BlueJ class context
-#Tue Jul 28 19:38:08 NZST 2026
+#Thu Jul 30 12:35:36 NZST 2026
 comment0.target=Queue
 comment0.text=\n This is the class for a 'queue' data structure\n It takes user input of data and adds it to the set\n It is a first in - first out data structure\n It utilises the node class to create the queue\n
 comment1.target=Queue()
