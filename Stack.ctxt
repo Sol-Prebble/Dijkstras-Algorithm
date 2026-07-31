@@ -1,5 +1,5 @@
 #BlueJ class context
-#Thu Jul 30 12:35:36 NZST 2026
+#Thu Jul 30 18:40:14 NZST 2026
 comment0.target=Stack
 comment0.text=\n Custom data structure class for a 'Stack'\n Last in, last out\n\n @author Sol Prebble\n @8/6/26\n
 comment1.target=Stack()

@@ -1,5 +1,5 @@
 #BlueJ class context
-#Thu Jul 30 12:32:14 NZST 2026
+#Thu Jul 30 18:40:10 NZST 2026
 comment0.target=Node
 comment0.text=\n This is the Node class\n It creates objects for each name structure inside the project\n
 comment1.target=Node()

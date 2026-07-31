@@ -49,6 +49,7 @@ public class PathFinder
         Node returnNode = null;
         for(int x=0;x< currentNode.getEdges().size(); x++){
             Edge currentEdge = currentNode.getEdges().get(x);
+
             recolorEdge(currentEdge, colorPalette.get("selected"));
             threadSleep();
             Node targetNode = currentEdge.getTargetNode();
@@ -62,8 +63,10 @@ public class PathFinder
             threadSleep();
             recolorEdge(currentEdge, colorPalette.get("visited"));
             returnNode = targetNode;
+
         }
         recolorNode(currentNode, colorPalette.get("visited"));
+
         currentNode.setVisited(true);
     }
 

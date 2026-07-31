@@ -56,6 +56,11 @@ public class GraphBuilder
         nodes.add(four);
         nodes.add(five);
         
+        for(int x = 0; x < nodes.size(); x++){
+            Node currentNode = nodes.get(x);
+            graph.addNode(currentNode);
+        }   
+        
         /* edges */
         for(Node n : graph.getAllNodes()){
             ArrayList<Edge> currentEdges = n.getEdges();
@@ -65,10 +70,7 @@ public class GraphBuilder
             }
         }
 
-        for(int x = 0; x < nodes.size(); x++){
-            Node currentNode = nodes.get(x);
-            graph.addNode(currentNode);
-        }   
+        
         return graph;
     }
     private static int edgeDistanceCalc(Node start, Node target){
