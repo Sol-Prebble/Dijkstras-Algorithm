@@ -37,7 +37,7 @@ public class GraphBuilder
         Node two = new Node(2, 600, 100, nodeColor);
         Node three = new Node(3, 50, 300, nodeColor);
         Node four = new Node(4, 300, 320, nodeColor);
-        Node five = new Node(5, 180, 150, nodeColor);
+        Node five = new Node(5, 200, 150, nodeColor);
         
         zero.addBidirectionalDestination(one, edgeDistanceCalc(zero,one));
         zero.addBidirectionalDestination(two, edgeDistanceCalc(zero,two));

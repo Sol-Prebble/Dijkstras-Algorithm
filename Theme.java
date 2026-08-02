@@ -37,7 +37,8 @@ public class Theme
         Color visitedText = Color.BLACK;
         Color selected = Color.MAGENTA;
         Color path = Color.CYAN;
-        Color buttonBackground = Color.DARK_GRAY;
+        Color buttonDisabled = Color.DARK_GRAY;
+        Color buttonEnabled = new Color(60, 0, 40); // deep magenta color
         Color buttonText = Color.WHITE;
         
         darkPalette.put("background", background);
@@ -48,7 +49,8 @@ public class Theme
         darkPalette.put("visitedText", visitedText);
         darkPalette.put("selected", selected);
         darkPalette.put("path", path);
-        darkPalette.put("buttonBackground", buttonBackground);
+        darkPalette.put("buttonDisabled", buttonDisabled);
+        darkPalette.put("buttonEnabled", buttonEnabled);
         darkPalette.put("buttonText", buttonText);
         
         return(darkPalette);

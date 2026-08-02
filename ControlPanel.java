@@ -40,6 +40,7 @@ public class ControlPanel
         this.resetButton = new JButton("RESET");
         buttons(canvas, newPath, graphBuilder);
     }
+
     /* getters */
     public JLayeredPane getLayeredPane(){
         return(this.layeredPane);
@@ -63,16 +64,21 @@ public class ControlPanel
      */
     private void buttons(PanelCanvas canvas, PathFinder newPath, GraphBuilder graphBuilder){
         createButtons();
-        
+
         /* update layered pane */
         layeredPaneAddition(layeredPane, canvas); // add the aspects to the layered pane
-        
+
+        boolean run = false;
         /* button functions */
+
+        resetButton(graphBuilder, canvas, nodes);
+        resetClass(); // set buttons and node variables to default state
         pickStartButton();
         pickTargetButton();
         runButton(newPath);
-        resetButton(graphBuilder, canvas, nodes);
+
     }
+
     /**
      * This methods role is to call the methods that determin the visuals of the buttons on the canvas. 
      * Made it's own method for easier orginisation
@@ -82,10 +88,11 @@ public class ControlPanel
      * @return void (nothing)
      */
     private void createButtons(){
-        setButtonBackgroundColor(colorPalette.get("buttonBackground"));
+        setButtonBackgroundColor(colorPalette.get("buttonEnabled"), colorPalette.get("buttonDisabled"));
         setButtonForegroundColor(colorPalette.get("buttonText")); 
         setButtonBounds();
     }
+
     /**
      * This methods role is to update / set the background (main) color of the buttons
      * It calls core methods to do so for each button
@@ -94,12 +101,13 @@ public class ControlPanel
      * 
      * @return void (nothing)
      */
-    private void setButtonBackgroundColor(Color backgroundColor){
-        pickStartButton.setBackground(backgroundColor);
-        pickTargetButton.setBackground(backgroundColor);
-        runButton.setBackground(backgroundColor);
-        resetButton.setBackground(backgroundColor);
+    private void setButtonBackgroundColor(Color buttonEnabledColor, Color buttonDisabledColor){
+        pickStartButton.setBackground(buttonEnabledColor);
+        pickTargetButton.setBackground(buttonDisabledColor);
+        runButton.setBackground(buttonDisabledColor);
+        resetButton.setBackground(buttonEnabledColor);
     }
+
     /**
      * This methods role is to update / set the foreground (text) color of the buttons
      * It calls core methods to do so for each button
@@ -114,6 +122,7 @@ public class ControlPanel
         runButton.setForeground(foregroundColor); 
         resetButton.setForeground(foregroundColor); 
     }
+
     /**
      * This methods role is to update / set the bounds (location and size) of the buttons
      * It calls core methods to do so for each button
@@ -129,17 +138,18 @@ public class ControlPanel
         final int targetButtonY = startButtonY + 60;
         final int runButtonY = targetButtonY + 60;
         final int resetButtonY = runButtonY + 60;
-        
+
         /* button size */
         final int buttonSizeX = 120;
         final int buttonSizeY = 40;
-        
+
         /* update methods */
         pickStartButton.setBounds(buttonX, startButtonY, buttonSizeX, buttonSizeY); 
         pickTargetButton.setBounds(buttonX, targetButtonY, buttonSizeX, buttonSizeY);
         runButton.setBounds(buttonX, runButtonY, buttonSizeX, buttonSizeY);
         resetButton.setBounds(buttonX, resetButtonY, buttonSizeX, buttonSizeY);
     }
+
     /**
      * This methods role is to update / set the bounds (location and size) of the buttons
      * It calls core methods to do so for each button
@@ -157,6 +167,7 @@ public class ControlPanel
         layeredPane.add(runButton, JLayeredPane.PALETTE_LAYER);
         layeredPane.add(resetButton, JLayeredPane.PALETTE_LAYER);
     }
+
     private void pickStartButton(){
 
         pickStartButton.addActionListener(new ActionListener(){
@@ -171,7 +182,10 @@ public class ControlPanel
                         items.get(name).addActionListener(new ActionListener(){
                                 @Override
                                 public void actionPerformed(ActionEvent e){
+                                    pickStartButton.setBackground(colorPalette.get("buttonDisabled"));
                                     start = currentNode;
+                                    pickTargetButton.setBackground(colorPalette.get("buttonEnabled"));    
+                                    pickTargetButton.setEnabled(true);
                                 }
                             });
                     }
@@ -197,7 +211,10 @@ public class ControlPanel
                         items.get(name).addActionListener(new ActionListener(){
                                 @Override
                                 public void actionPerformed(ActionEvent e){
+                                    pickTargetButton.setBackground(colorPalette.get("buttonDisabled"));
                                     target = currentNode;
+                                    runButton.setBackground(colorPalette.get("buttonEnabled"));
+                                    runButton.setEnabled(true);
                                 }
                             });
                     }
@@ -218,24 +235,49 @@ public class ControlPanel
             dropDownMenu.removeAll();
         }
     }
-    private void runButton(PathFinder newPath){
 
+    private void runButton(PathFinder newPath){
         runButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    newPath.runAlgorithm(start, target, colorPalette);
+                    runButton.setBackground(colorPalette.get("buttonDisabled"));
+                    newPath.runAlgorithm(start, target, colorPalette); //# start algorithm
+                    resetButton.setBackground(colorPalette.get("buttonEnabled"));
+                    /* reset variables */
+                    start = null;
+                    target = null;
+                    /* turn off buttons */
+                    pickStartButton.setEnabled(false);
+                    pickTargetButton.setEnabled(false);
+                    runButton.setEnabled(false);
                 }
             });
     }
+
     private void resetButton(GraphBuilder graphBuilder, PanelCanvas canvas, ArrayList<Node> nodes){
 
         resetButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
+                    resetClass();
                     graphBuilder.resetGraph(colorPalette);
                     PathFinder newPath = new PathFinder(graphBuilder.getGraph(), canvas);
                     canvas.repaint();
                 }
             });
+    }
+    /**
+     * This class resets the variables and buttons to their default state
+     * Nodes = undefined
+     * buttons = only pickStart and reset buttons enabled
+     */
+    private void resetClass(){
+        start = null;
+        target = null;
+        pickTargetButton.setEnabled(false);
+        runButton.setEnabled(false);
+        pickStartButton.setEnabled(true);
+        resetButton.setEnabled(true);
+        setButtonBackgroundColor(colorPalette.get("buttonEnabled"), colorPalette.get("buttonDisabled"));
     }
 }
