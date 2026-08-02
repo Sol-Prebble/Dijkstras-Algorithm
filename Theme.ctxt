@@ -1,16 +1,19 @@
 #BlueJ class context
-#Fri Jul 31 17:40:03 NZST 2026
 comment0.target=Theme
-comment0.text=\n Write a description of class Theme here.\n\n @author (your name)\n @version (a version number or a date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Theme\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
 comment1.target=Theme()
-comment1.text=\n Constructor for objects of class Theme\n
-comment2.params=graph palette
-comment2.target=void setUpColors(Graph, java.util.Map)
-comment3.target=java.util.Map darkPalette()
-comment4.target=java.util.Map defaultPalette()
-comment5.target=java.util.Map getPalette()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Theme\r\n
+comment2.params=graph\ palette
+comment2.target=void\ setUpColors(Graph,\ java.util.Map)
+comment3.params=
+comment3.target=java.util.Map\ darkPalette()
+comment4.params=
+comment4.target=java.util.Map\ defaultPalette()
+comment5.params=
+comment5.target=java.util.Map\ getPalette()
 comment5.text=Getters
 comment6.params=palette
-comment6.target=void setPalette(java.util.Map)
+comment6.target=void\ setPalette(java.util.Map)
 comment6.text=Setters
 numComments=7

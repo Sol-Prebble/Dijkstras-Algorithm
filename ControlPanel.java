@@ -186,6 +186,7 @@ public class ControlPanel
                                     start = currentNode;
                                     pickTargetButton.setBackground(colorPalette.get("buttonEnabled"));    
                                     pickTargetButton.setEnabled(true);
+                                    pickStartButton.setEnabled(false);
                                 }
                             });
                     }

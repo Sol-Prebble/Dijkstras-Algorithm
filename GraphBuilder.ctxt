@@ -1,20 +1,20 @@
 #BlueJ class context
-#Fri Jul 31 16:51:26 NZST 2026
 comment0.target=GraphBuilder
-comment0.text=\n Write a description of class GraphBuilder here.\n\n @author (your name)\n @version (a version number or a date)\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ GraphBuilder\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
 comment1.params=colorPalette
 comment1.target=GraphBuilder(java.util.Map)
-comment1.text=\n Constructor for objects of class GraphBuilder\n
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GraphBuilder\r\n
 comment2.params=colorPalette
-comment2.target=Graph defaultGraph(java.util.Map)
-comment2.text=\n This method is used as a default graph for the algorithm\n @param\n      nodes - the arraylist collection of every node\n      graph - an object of the custom class Graph. It is essentailly a map of all the nodes\n       \= \n @return\n      void (nothing)\n
-comment3.params=start target
-comment3.target=int edgeDistanceCalc(Node, Node)
+comment2.target=Graph\ defaultGraph(java.util.Map)
+comment2.text=\r\n\ This\ method\ is\ used\ as\ a\ default\ graph\ for\ the\ algorithm\r\n\ @param\r\n\ \ \ \ \ \ nodes\ -\ the\ arraylist\ collection\ of\ every\ node\r\n\ \ \ \ \ \ graph\ -\ an\ object\ of\ the\ custom\ class\ Graph.\ It\ is\ essentailly\ a\ map\ of\ all\ the\ nodes\r\n\ \ \ \ \ \ \ \=\ \r\n\ @return\r\n\ \ \ \ \ \ void\ (nothing)\r\n
+comment3.params=start\ target
+comment3.target=int\ edgeDistanceCalc(Node,\ Node)
 comment4.params=colorPalette
-comment4.target=void resetGraph(java.util.Map)
-comment5.target=Graph getGraph()
+comment4.target=void\ resetGraph(java.util.Map)
+comment5.params=
+comment5.target=Graph\ getGraph()
 comment5.text=Getters
 comment6.params=graph
-comment6.target=void setGraph(Graph)
+comment6.target=void\ setGraph(Graph)
 comment6.text=setters
 numComments=7
