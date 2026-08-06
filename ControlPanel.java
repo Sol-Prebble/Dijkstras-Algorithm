@@ -241,12 +241,6 @@ public class ControlPanel
         runButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
-                    runButton.setBackground(colorPalette.get("buttonDisabled"));
-                    newPath.runAlgorithm(start, target, colorPalette, ControlPanel.this); //# start algorithm
-                    resetButton.setBackground(colorPalette.get("buttonEnabled"));
-                    /* reset variables */
-                    start = null;
-                    target = null;
                     /* turn off buttons */
                     pickStartButton.setEnabled(false);
                     pickTargetButton.setEnabled(false);
@@ -254,6 +248,13 @@ public class ControlPanel
                     // reset button
                     resetButton.setBackground(colorPalette.get("buttonDisabled"));
                     resetButton.setEnabled(false);
+                    runButton.setBackground(colorPalette.get("buttonDisabled"));
+                    newPath.runAlgorithm(start, target, colorPalette, ControlPanel.this); //# start algorithm
+                    resetButton.setBackground(colorPalette.get("buttonDisabled"));
+                    /* reset variables */
+                    start = null;
+                    target = null;
+                    
                 }
             });
     }

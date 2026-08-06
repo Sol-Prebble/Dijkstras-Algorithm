@@ -25,8 +25,7 @@ public class PathFinder
      * https://www.geeksforgeeks.org/java/thread-sleep-method-in-java-with-examples/
      * 
      */
-    public boolean runAlgorithm(Node startNode, Node endNode, Map<String, Color> colorPalette, ControlPanel controlPanel){
-        boolean pathFound = false;
+    public void runAlgorithm(Node startNode, Node endNode, Map<String, Color> colorPalette, ControlPanel controlPanel){
         this.colorPalette = colorPalette;
         new Thread(() -> {
                     nodeOrder.enqueue(startNode);
@@ -40,10 +39,9 @@ public class PathFinder
                         }
                     }
                     finalPath(startNode, endNode);
+                    controlPanel.enableResetButton(canvas);
                     canvas.repaint();
             }).start();
-        controlPanel.enableResetButton(canvas);
-        return(pathFound);
     }
 
     public void findShortestLocalPath(Node currentNode){
