@@ -5,8 +5,8 @@ import java.util.ArrayList;
  * Write a description of class Graph here.
  * https://www.w3schools.com/Java/java_hashmap.asp
  * https://stackoverflow.com/questions/1348199/what-is-the-difference-between-the-hashmap-and-map-objects-in-java
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sol Prebble
+ * @version 6-8-26
  */
 public class Graph
 {
@@ -24,13 +24,21 @@ public class Graph
             return(this.node);
         }
     }
+    /* object variables */
     private Map<String, GraphNode> map = new HashMap<>();
+    /* constructors */
     public Graph(ArrayList<Node> nodes){
         for(int x=0;x<nodes.size();x++){
             addNode(nodes.get(x));
         }
     }
     public Graph(){}
+    
+    /**
+     * Adds a node to the graph
+     * @param node - that is being added
+     * @return null / void
+     */
     public void addNode(Node node){
         String newNodeName = String.valueOf(node.getName()); // convert char to string
         GraphNode graphNode = new GraphNode(node);

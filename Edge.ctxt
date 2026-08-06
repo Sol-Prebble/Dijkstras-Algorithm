@@ -1,24 +1,21 @@
 #BlueJ class context
+#Thu Aug 06 18:16:42 NZST 2026
 comment0.target=Edge
-comment0.text=\r\n\ The\ connections\ between\ nodes\r\n\r\n\ @Sol\ prebble\r\n\ @v1\r\n
-comment1.params=targetNode\ distance
-comment1.target=Edge(Node,\ int)
-comment2.params=
-comment2.target=Node\ getTargetNode()
+comment0.text=\n The connections between nodes\n\n @author\: Sol prebble\n @version\: 6-8-26\n
+comment1.params=targetNode distance
+comment1.target=Edge(Node, int)
+comment2.target=Node getTargetNode()
 comment2.text=getters
-comment3.params=
-comment3.target=int\ getDistance()
-comment4.params=
-comment4.target=java.awt.Color\ getColor()
-comment5.params=
-comment5.target=Edge\ getTwin()
+comment3.target=int getDistance()
+comment4.target=java.awt.Color getColor()
+comment5.target=Edge getTwin()
 comment6.params=targetNode
-comment6.target=void\ setTargetNode(Node)
+comment6.target=void setTargetNode(Node)
 comment6.text=setters
 comment7.params=distance
-comment7.target=void\ setDistance(int)
+comment7.target=void setDistance(int)
 comment8.params=newColor
-comment8.target=void\ setColor(java.awt.Color)
+comment8.target=void setColor(java.awt.Color)
 comment9.params=twin
-comment9.target=void\ setTwin(Edge)
+comment9.target=void setTwin(Edge)
 numComments=10

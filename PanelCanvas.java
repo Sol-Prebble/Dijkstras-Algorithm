@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 /**
- * Write a description of class PanelCanvas here.
+ * Creates and maintains the GUI window
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sol Prebble
+ * @version 6-8-26
  */
 public class PanelCanvas extends JPanel 
 {
@@ -20,7 +20,7 @@ public class PanelCanvas extends JPanel
     {
         this.colorPalette = colorPalette;
         this.graph = new Graph(nodes);
-        
+
         repaint();
     }
 
@@ -46,14 +46,14 @@ public class PanelCanvas extends JPanel
             /* node circle */
             g.setColor(n.getColor());
             g.fillOval(n.getX(),n.getY(),n.getRadius(),n.getRadius());
-            
+
             Font customFont = new Font("SansSerif", Font.BOLD, 18);
             g.setFont(customFont);
-            
+
             /* text */
             String text = String.valueOf(n.getName());
             FontMetrics fm = g.getFontMetrics();
-            
+
             // Calculate centering X
             int textWidth = fm.stringWidth(text);
             int centreX = n.getX() + (n.getRadius() - textWidth) / 2;
@@ -62,21 +62,27 @@ public class PanelCanvas extends JPanel
             int textHeight = fm.getHeight();
             int textAscent = fm.getAscent();
             int centreY = n.getY() + (n.getRadius() - textHeight) / 2 + textAscent;
-            
+
             if(n.getVisited()){
                 g.setColor(colorPalette.get("visitedText"));
             } else {
                 g.setColor(colorPalette.get("text"));
             }
-            
+
             g.drawString(text, centreX, centreY);
-            
+
         }
     }
+
+    /**
+     * Creates a new graphBuilder and extracts the graph
+     * @param nodes(list)
+     * @return Graph (obejct)
+     */
     private Graph setUpGraph(ArrayList<Node> nodes){
         GraphBuilder graphBuilder = new GraphBuilder(colorPalette);
         this.graph = graphBuilder.getGraph();
         return graph;
     }
-    
+
 }

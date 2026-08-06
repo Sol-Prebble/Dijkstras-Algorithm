@@ -4,15 +4,16 @@ import java.util.Map;
 import javax.swing.*;
 /**
  * This class finds the shortest path 
+ * It contains the aglorithm behind the animation
  *
  * @Sol Prebble
- * @5/6/26
+ * @7/8/26
  */
 public class PathFinder
 {
     private Graph graph; // graph of nodes
     private Queue nodeOrder = new Queue(); // contains each
-    private PanelCanvas canvas;
+    private PanelCanvas canvas; // GUI pane object
     private Map<String, Color> colorPalette;
     public PathFinder(Graph graph, PanelCanvas canvas){
         this.graph = graph;
@@ -24,6 +25,12 @@ public class PathFinder
      * https://pressbooks.pub/javaprogramming/chapter/multithreading-java-programming/
      * https://www.geeksforgeeks.org/java/thread-sleep-method-in-java-with-examples/
      * 
+     */
+    /**
+     * Contain the first part of the algorithm
+     * It takes out a node from a priority queue and calls the findShortestLocalPath if unvisited
+     * @param startNode (Node), endNode (node), colorPalette (map), controlPanel (object)
+     * @return null/void
      */
     public void runAlgorithm(Node startNode, Node endNode, Map<String, Color> colorPalette, ControlPanel controlPanel){
         this.colorPalette = colorPalette;
@@ -43,7 +50,12 @@ public class PathFinder
                     canvas.repaint();
             }).start();
     }
-
+    /**
+     * Finds the shortest edge on the current node
+     * Also updates the colors
+     * @param Node currentNode
+     * @return null/void
+     */
     public void findShortestLocalPath(Node currentNode){
         recolorNode(currentNode, colorPalette.get("selected"));
         Node returnNode = null;
@@ -66,15 +78,21 @@ public class PathFinder
 
         }
         recolorNode(currentNode, colorPalette.get("visited"));
-
         currentNode.setVisited(true);
     }
-
+    /**
+     * Calculates the final path
+     * Each node contains the previous node in the shortest path as a variable
+     * This method puts all the nodes into a stack
+     * This means we can later utilise the functionality of a stack to take them out in reverse. Getting the final path (done in the next method)
+     * @param Node startNode, Node currentNode
+     * @return Stack
+     */
     public Stack finalPath(Node startNode, Node currentNode){
         Stack path = new Stack();
         while(currentNode!=null){
             Edge currentEdge = currentNode.getPreviousEdge();
-            System.out.println(currentNode.getName());
+            //System.out.println(currentNode.getName());
             recolorNode(currentNode, colorPalette.get("path"));
             if(currentEdge != null){
                 recolorEdge(currentEdge, colorPalette.get("path"));
@@ -86,7 +104,12 @@ public class PathFinder
         printFinalPath(path);
         return path;
     }
-
+    /**
+     * Prints the final path in the terminal
+     * Pops a node from the top of the stack one at a time, giving us the final path
+     * @param Stack path
+     * @return void
+     */
     public void printFinalPath(Stack path){
         String pathData = "";
         while(!path.isEmpty()){
@@ -109,6 +132,11 @@ public class PathFinder
      *      https://codingtechroom.com/question/invoke-and-wait-swingutilities
      * To make the canvas update imediatly
      * https://codingtechroom.com/question/jcomponent-paintimmediately-java-swing
+     */ //# NOTE: this didn't actauly fix anything, but it works the same so I left it.
+    /**
+     * Updates the current nodes color variable
+     * @param Node currentNode, Color newColor
+     * @return void
      */
     public void recolorNode(Node currentNode, Color newColor){
         try{
@@ -121,7 +149,11 @@ public class PathFinder
         }
 
     }
-
+    /**
+     * Updates the current edges color variable
+     * @param Edge currentEdge, Color newColor
+     * @return void
+     */
     public void recolorEdge(Edge currentEdge, Color newColor){
         Edge twin = currentEdge.getTwin();
         try{

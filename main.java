@@ -2,10 +2,10 @@ import java.util.*;
 import javax.swing.*;
 import java.awt.*;
 /**
- * Write a description of class main here.
+ * sets up the program
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author  Sol Prebble
+ * @version 6-8-26
  */
 public class main
 {
@@ -51,13 +51,4 @@ public class main
         window.toFront();
         window.setVisible(true);
     }
-    
-    
-    
-    
-    
-    
-    
-
-    
 }

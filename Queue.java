@@ -11,6 +11,7 @@ public class Queue{
     private QueueNode tail = null;
     /**
      * Wrapper class
+     * Converts nodes into the queue
      */
     private class QueueNode{
         Node node;
@@ -27,16 +28,6 @@ public class Queue{
 
         public QueueNode getNext(){
             return(this.next);
-        }
-
-        public QueueNode getNextRecursive(int n){
-            if(n == 0){
-                return(this);
-            }
-            if(this.next == null){
-                return(null);
-            }
-            return(this.next.getNextRecursive(n-1));
         }
 
         /* setters */
@@ -73,6 +64,12 @@ public class Queue{
         previous.setNext(newNode);
         this.head = dummy.getNext();
     }
+    /**
+     * This method adds a node to the queue
+     * It's position at the end of the queue
+     * @param node - that will be added
+     * @return null
+     */
     public void enqueue(Node node){
         QueueNode newNode = new QueueNode(node);
         if(isEmpty()){
@@ -86,6 +83,8 @@ public class Queue{
     /**
      * This method removes the first node in the queue
      * It takes nothing and returns the QueueNode that was removed
+     * @param null
+     * @return node - whatever one is removed from the queue
      */
     public Node dequeue(){
         if(isEmpty()){
@@ -95,7 +94,14 @@ public class Queue{
             this.head = queueNode.getNext();
             return(queueNode.getNode());
         }
+
     }
+    /**
+     * Prints out the queue into the terminal
+     * Primarily used for testing and development for the prorgam
+     * @param null
+     * @return null
+     */
     public void print(){
         Queue temp = new Queue();
         String fullQueueString = "";

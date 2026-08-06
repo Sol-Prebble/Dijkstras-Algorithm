@@ -2,19 +2,23 @@ import java.util.ArrayList;
 import java.awt.Color;
 /**
  * This is the Node class
- * It creates objects for each name structure inside the project
+ * Each object is a node for the graph
+ * @author: Sol Prebble
+ * @version: 6-8-26
  */
 public class Node{
     private int name;
+    /* Algorithmic variables */
     private ArrayList<Edge> edges = new ArrayList<Edge>();
     private int distanceFromStart;
     private boolean visited;
     private Node previous;
     private Edge previousEdge;
+    /* GUI variables */
     private int x;
     private int y;
     private int radius;
-    private Color color; // node color
+    private Color color;
     /* Constructor */
     public Node(int name, int x, int y, Color color){
         this.name = name;
@@ -40,6 +44,11 @@ public class Node{
         this.edges.add(forwards);
         destination.edges.add(reverse);
     }
+    /**
+     * Sets all the object variables back to what they were at the start
+     * @param color
+     * @return null
+     */
     public void resetNode(Color color){
         this.name = name;
         this.edges = edges;

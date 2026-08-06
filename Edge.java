@@ -2,12 +2,12 @@ import java.awt.Color;
 /**
  * The connections between nodes
  *
- * @Sol prebble
- * @v1
+ * @author: Sol prebble
+ * @version: 6-8-26
  */
 public class Edge
 {
-    private int distance; // the cost to travel this edg e
+    private int distance; // the cost to travel this edge
     private Node targetNode; // the node this edge leads to
     private Edge twin; // edge that travels the same route but backwards
     private Color color;

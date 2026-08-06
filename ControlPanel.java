@@ -3,17 +3,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 /**
- * Write a description of class ControlPanel here.
+ * Creates and maintains the buttons on the GUI
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sol Prebble
+ * @version 6-8-26
  */
 public class ControlPanel
 {
     private JPopupMenu dropDownMenu;
+    private Map<String, JMenuItem> items; // for the drop down menu
     private Map<String, Color> colorPalette;
     private ArrayList<Node> nodes;
-    private Map<String, JMenuItem> items;
     private JLayeredPane layeredPane;
     /* buttons */
     private JButton pickStartButton;
@@ -23,8 +23,11 @@ public class ControlPanel
     /* nodes */
     private Node start;
     private Node target;
+
+    private String state;
     /**
      * Constructor for objects of class ControlPanel
+     * @param theme (the colors), canvas (the GUI pane), nodes (list), newPath (the algorithm object), graphBuilder (contains the graph)
      */
     public ControlPanel(Theme theme, PanelCanvas canvas, ArrayList<Node> nodes, PathFinder newPath, GraphBuilder graphBuilder)
     {
@@ -38,6 +41,7 @@ public class ControlPanel
         this.pickTargetButton = new JButton("Pick Target");
         this.runButton = new JButton("Run");
         this.resetButton = new JButton("RESET");
+        this.state = "pickStart";
         buttons(canvas, newPath, graphBuilder);
     }
 
@@ -45,7 +49,6 @@ public class ControlPanel
     public JLayeredPane getLayeredPane(){
         return(this.layeredPane);
     }
-
     /**
      * Button methods
      */
@@ -168,6 +171,12 @@ public class ControlPanel
         layeredPane.add(resetButton, JLayeredPane.PALETTE_LAYER);
     }
 
+    /**
+     * Contains the action listener for if the pick start node button is clicked
+     * Sets up the next buttons to be clicked and asigns the start node
+     * @param null
+     * @return null
+     */
     private void pickStartButton(){
 
         pickStartButton.addActionListener(new ActionListener(){
@@ -182,11 +191,11 @@ public class ControlPanel
                         items.get(name).addActionListener(new ActionListener(){
                                 @Override
                                 public void actionPerformed(ActionEvent e){
-                                    pickStartButton.setBackground(colorPalette.get("buttonDisabled"));
                                     start = currentNode;
+                                    pickStartButton.setBackground(colorPalette.get("buttonDisabled"));
+                                    pickStartButton.setEnabled(false);
                                     pickTargetButton.setBackground(colorPalette.get("buttonEnabled"));    
                                     pickTargetButton.setEnabled(true);
-                                    pickStartButton.setEnabled(false);
                                 }
                             });
                     }
@@ -199,6 +208,12 @@ public class ControlPanel
             });
     }
 
+    /**
+     * Contains the action listener for if the pick target node button is clicked
+     * Sets up the next buttons to be clicked and asigns the target node
+     * @param null
+     * @return null
+     */
     private void pickTargetButton(){
         pickTargetButton.addActionListener(new ActionListener(){
                 @Override
@@ -212,8 +227,9 @@ public class ControlPanel
                         items.get(name).addActionListener(new ActionListener(){
                                 @Override
                                 public void actionPerformed(ActionEvent e){
-                                    pickTargetButton.setBackground(colorPalette.get("buttonDisabled"));
                                     target = currentNode;
+                                    pickTargetButton.setBackground(colorPalette.get("buttonDisabled"));    
+                                    pickTargetButton.setEnabled(false);
                                     runButton.setBackground(colorPalette.get("buttonEnabled"));
                                     runButton.setEnabled(true);
                                 }
@@ -228,6 +244,11 @@ public class ControlPanel
             });
     }
 
+    /**
+     * Changes the visibility of the drop down menus
+     * @param null
+     * @return null
+     */
     private void updateDropDownVisibility(){
         boolean menuVisible = dropDownMenu.isVisible();
         if(menuVisible){
@@ -237,28 +258,43 @@ public class ControlPanel
         }
     }
 
+    /**
+     * Contains the action listener for if the run button is clicked
+     * Calls the runAlgorthm method in newPath.
+     * @param newPath (an algorithm object)
+     * @return null
+     */
     private void runButton(PathFinder newPath){
         runButton.addActionListener(new ActionListener(){
                 @Override
                 public void actionPerformed(ActionEvent e){
+                    /* new algorithm */
+                    newPath.runAlgorithm(start, target, colorPalette, ControlPanel.this); //# start algorithm
+
+                    /* reset variables */
+                    start = null;
+                    target = null;
+
+                    /* set colors */
+                    pickStartButton.setBackground(colorPalette.get("buttonDisabled"));
+                    pickTargetButton.setBackground(colorPalette.get("buttonDisabled"));
+                    resetButton.setBackground(colorPalette.get("buttonDisabled"));
+                    runButton.setBackground(colorPalette.get("buttonDisabled"));
                     /* turn off buttons */
                     pickStartButton.setEnabled(false);
                     pickTargetButton.setEnabled(false);
                     runButton.setEnabled(false);
-                    // reset button
-                    resetButton.setBackground(colorPalette.get("buttonDisabled"));
                     resetButton.setEnabled(false);
-                    runButton.setBackground(colorPalette.get("buttonDisabled"));
-                    newPath.runAlgorithm(start, target, colorPalette, ControlPanel.this); //# start algorithm
-                    resetButton.setBackground(colorPalette.get("buttonDisabled"));
-                    /* reset variables */
-                    start = null;
-                    target = null;
-                    
                 }
             });
     }
 
+    /**
+     * Contains the action listener for if the reset button is clicked
+     * Resets the colors and nodes. Creates a new algorithm object
+     * @param graphBuilder (contains the graph), canvas (graphic panel object), nodes (list)
+     * @return null
+     */
     private void resetButton(GraphBuilder graphBuilder, PanelCanvas canvas, ArrayList<Node> nodes){
 
         resetButton.addActionListener(new ActionListener(){
@@ -271,8 +307,13 @@ public class ControlPanel
                 }
             });
     }
+
+    /**
+     * Turns the resetButton on
+     * @param canvas (graphic panel object)
+     * @return null/ void
+     */
     public void enableResetButton(PanelCanvas canvas){
-        System.out.println("enable reset Button");
         resetButton.setEnabled(true);
         resetButton.setBackground(colorPalette.get("buttonEnabled"));
         canvas.repaint();

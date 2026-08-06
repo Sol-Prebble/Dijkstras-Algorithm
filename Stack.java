@@ -10,6 +10,7 @@ public class Stack
 {
     /**
      * Wrapper class
+     * Converts nodes into the stack
      */
     private class StackNode{
         Node node;
@@ -33,19 +34,36 @@ public class Stack
             this.next = newNode;
         }
     }
+    /* object variables */
     private StackNode top;
-    public Stack(){}
     
+    /* constructor */
+    public Stack(){}//empty
+    
+    /*
+     * checks if the stack is empty or not
+     * @param null
+     * @return boolean
+     */
     public boolean isEmpty(){
         return(this.top==null);
     }
     
+    /**
+     * Adds a node to the top of the stack
+     * @param node - that will be added
+     * @return void/null
+     */ 
     public void push(Node node){
         StackNode newNode = new StackNode(node);
         newNode.setNext(this.top);
         this.top = newNode;
     }
-    
+    /**
+     * Removes a node from the top of the stack
+     * @param null
+     * @return node - that was removed
+     */ 
     public Node pop(){
         StackNode temp = this.top;
         Node tempNode = temp.getNode();

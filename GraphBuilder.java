@@ -1,22 +1,22 @@
 import java.util.*;
 import java.awt.*;
 /**
- * Write a description of class GraphBuilder here.
+ * Creates a graph
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sol Prebble
+ * @version 6-8-26
  */
 public class GraphBuilder
 {
-    // instance variables - replace the example below with your own
     private Graph graph = new Graph();
     private ArrayList<Node> nodes = new ArrayList<>();
     /**
      * Constructor for objects of class GraphBuilder
+     * Creates a new graph
      */
     public GraphBuilder(Map<String, Color> colorPalette)
     {
-        this.graph = testingGraph(colorPalette);
+        this.graph = defaultGraph(colorPalette);
     }
 
     /**
@@ -102,11 +102,19 @@ public class GraphBuilder
         
         return graph;
     }
+    /**
+     * Calculates the distance between two nodes
+     * @param start (node), target (node)
+     * @return distance (int)
+     */
     private static int edgeDistanceCalc(Node start, Node target){
         int x = start.getX() - target.getX();
         int y = start.getY() - target.getY();
         return (int) Math.hypot(x, y);
     }
+    /** 
+     * sets the color of all the nodes and edges to default
+     */
     public void resetGraph(Map<String, Color> colorPalette){
         for(Node n : graph.getAllNodes()){
             n.resetNode(colorPalette.get("nodeDefault"));

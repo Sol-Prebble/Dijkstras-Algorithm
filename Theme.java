@@ -1,10 +1,11 @@
 import java.awt.*;
 import java.util.*;
 /**
- * Write a description of class Theme here.
+ * This class controls the color palette that the program uses.
+ * It contains methods for each variaty and also to add the colors to nodes and edges
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Sol Prebble
+ * @version 6-8-26
  */
 public class Theme
 {
@@ -16,7 +17,12 @@ public class Theme
     {
         this.palette = darkPalette();
     }
-    private void setUpColors(Graph graph, Map<String, Color> palette){
+    /**
+     * Sets up all the nodes and edges with the colors that have been chosen
+     * @param graph - that contains the nodes
+     * @return null / void
+     */
+    private void setUpColors(Graph graph){
         for(Node currentNode : graph.getAllNodes()){
             currentNode.setColor(palette.get("nodeDefault"));
             ArrayList<Edge> currentEdges = currentNode.getEdges();
@@ -26,9 +32,16 @@ public class Theme
             }
         }
     }
+    /**
+     * The dark version of the color palette
+     * Creates a map with all the different colors to be used throughout the program
+     * Sets them up with the same name as the variable to be used for calling the color
+     * @param null
+     * @return darkPalette - the map of the colors
+     */
     private Map<String, Color> darkPalette(){
         Map<String, Color> darkPalette = new HashMap<>();
-        
+
         Color background = Color.BLACK;
         Color nodeDefault = Color.DARK_GRAY;
         Color edgeDefault = nodeDefault;
@@ -40,7 +53,7 @@ public class Theme
         Color buttonDisabled = Color.DARK_GRAY;
         Color buttonEnabled = new Color(60, 0, 40); // deep magenta color
         Color buttonText = Color.WHITE;
-        
+
         darkPalette.put("background", background);
         darkPalette.put("nodeDefault", nodeDefault);
         darkPalette.put("edgeDefault", edgeDefault);
@@ -52,13 +65,20 @@ public class Theme
         darkPalette.put("buttonDisabled", buttonDisabled);
         darkPalette.put("buttonEnabled", buttonEnabled);
         darkPalette.put("buttonText", buttonText);
-        
+
         return(darkPalette);
     }
-    private Map<String, Color> defaultPalette(){
-        
-        Map<String, Color> defaultPalette = new HashMap<>();
-        
+    /**
+     * The light version of the color palette
+     * Creates a map with all the different colors to be used throughout the program
+     * Sets them up with the same name as the variable to be used for calling the color
+     * @param null
+     * @return lightPalette - the map of the colors
+     */
+    private Map<String, Color> lightPalette(){
+
+        Map<String, Color> lightPalette = new HashMap<>();
+
         Color background = Color.GRAY;
         Color nodeDefault = Color.LIGHT_GRAY;
         Color edgeDefault = nodeDefault;
@@ -68,24 +88,24 @@ public class Theme
         Color path = Color.GREEN;
         Color buttonBackground = Color.DARK_GRAY;
         Color buttonText = Color.WHITE;
-        
-        defaultPalette.put("background", background);
-        defaultPalette.put("nodeDefault", nodeDefault);
-        defaultPalette.put("edgeDefault", edgeDefault);
-        defaultPalette.put("text", text);
-        defaultPalette.put("visitedText", visitedText);
-        defaultPalette.put("selected", selected);
-        defaultPalette.put("path", path);
-        defaultPalette.put("buttonBackground", buttonBackground);
-        defaultPalette.put("buttonText", buttonText);
-        return(defaultPalette);
+
+        lightPalette.put("background", background);
+        lightPalette.put("nodeDefault", nodeDefault);
+        lightPalette.put("edgeDefault", edgeDefault);
+        lightPalette.put("text", text);
+        lightPalette.put("visitedText", visitedText);
+        lightPalette.put("selected", selected);
+        lightPalette.put("path", path);
+        lightPalette.put("buttonBackground", buttonBackground);
+        lightPalette.put("buttonText", buttonText);
+        return(lightPalette);
     }
-    
+
     /* Getters */
     public Map<String, Color> getPalette(){
         return(this.palette);
     }
-    
+
     /* Setters */
     public void setPalette(Map<String, Color> palette){
         this.palette = palette;
