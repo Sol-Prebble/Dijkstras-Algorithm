@@ -27,9 +27,11 @@ comment19.target=void\ actionPerformed(java.awt.event.ActionEvent)
 comment2.params=
 comment2.target=javax.swing.JLayeredPane\ getLayeredPane()
 comment2.text=getters
-comment20.params=
-comment20.target=void\ resetClass()
-comment20.text=\r\n\ This\ class\ resets\ the\ variables\ and\ buttons\ to\ their\ default\ state\r\n\ Nodes\ \=\ undefined\r\n\ buttons\ \=\ only\ pickStart\ and\ reset\ buttons\ enabled\r\n
+comment20.params=canvas
+comment20.target=void\ enableResetButton(PanelCanvas)
+comment21.params=
+comment21.target=void\ resetClass()
+comment21.text=\r\n\ This\ class\ resets\ the\ variables\ and\ buttons\ to\ their\ default\ state\r\n\ Nodes\ \=\ undefined\r\n\ buttons\ \=\ only\ pickStart\ and\ reset\ buttons\ enabled\r\n
 comment3.params=canvas\ newPath\ graphBuilder
 comment3.target=void\ buttons(PanelCanvas,\ PathFinder,\ GraphBuilder)
 comment3.text=\r\n\ This\ method\ role\ is\ to\ create\ the\ buttons\ that\ appear\ on\ the\ screen\ and\ call\ all\ of\ the\ functions\ that\ are\ involved\ in\ setting\ them\ up\r\n\ @param\ \r\n\ \ \ \ \ \ layeredPane\ -\ an\ object\ of\ the\ core\ java\ class\ to\ set\ the\ depth\ of\ content\ in\ the\ GUI\r\n\ \ \ \ \ \ canvas\ -\ the\ set\ that\ all\ of\ the\ content\ is\ displayed\r\n\ \ \ \ \ \ dropDownMenu\ -\ the\ menu\ that\ pops\ up\ with\ all\ of\ the\ nodes\ as\ options\r\n\ \ \ \ \ \ nodes\ -\ an\ arraylist\ that\ acts\ as\ storage\ for\ all\ of\ the\ nodes\ in\ the\ graph\r\n\ \ \ \ \ \ items\ -\ a\ map\ that\ is\ an\ index\ version\ of\ the\ 'nodes'\ arraylist.\ Used\ for\ dropdown\ menu\ names\r\n\ \ \ \ \ \ newPath\ -\ an\ object\ of\ the\ custom\ PathFinder\ class\ that\ contains\ the\ actual\ algorithm.\ Used\ to\ start\ the\ algorithm.\r\n\ \ \ \ \ \ \r\n\ @return\ void\ (nothing)\r\n\ \ \ \ \ \ \r\n
@@ -50,4 +52,4 @@ comment8.target=void\ layeredPaneAddition(javax.swing.JLayeredPane,\ PanelCanvas
 comment8.text=\r\n\ This\ methods\ role\ is\ to\ update\ /\ set\ the\ bounds\ (location\ and\ size)\ of\ the\ buttons\r\n\ It\ calls\ core\ methods\ to\ do\ so\ for\ each\ button\r\n\ @param\r\n\ \ \ \ \ \ layeredPane\ -\ the\ object\ that\ allows\ us\ to\ change\ the\ depth\ of\ content\ on\ the\ canvas\r\n\ \ \ \ \ \ canvas\ -\ Where\ everythig\ is\ drawn\r\n\ \ \ \ \ \ pickStartButton,\ pickTargetButton,\ runButton\ -\ all\ JButton\ objects.\r\n\ \r\n\ @return\ void\ (nothing)\r\n
 comment9.params=
 comment9.target=void\ pickStartButton()
-numComments=21
+numComments=22

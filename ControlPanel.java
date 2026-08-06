@@ -242,7 +242,7 @@ public class ControlPanel
                 @Override
                 public void actionPerformed(ActionEvent e){
                     runButton.setBackground(colorPalette.get("buttonDisabled"));
-                    newPath.runAlgorithm(start, target, colorPalette); //# start algorithm
+                    newPath.runAlgorithm(start, target, colorPalette, ControlPanel.this); //# start algorithm
                     resetButton.setBackground(colorPalette.get("buttonEnabled"));
                     /* reset variables */
                     start = null;
@@ -251,6 +251,9 @@ public class ControlPanel
                     pickStartButton.setEnabled(false);
                     pickTargetButton.setEnabled(false);
                     runButton.setEnabled(false);
+                    // reset button
+                    resetButton.setBackground(colorPalette.get("buttonDisabled"));
+                    resetButton.setEnabled(false);
                 }
             });
     }
@@ -267,6 +270,13 @@ public class ControlPanel
                 }
             });
     }
+    public void enableResetButton(PanelCanvas canvas){
+        System.out.println("enable reset Button");
+        resetButton.setEnabled(true);
+        resetButton.setBackground(colorPalette.get("buttonEnabled"));
+        canvas.repaint();
+    }
+
     /**
      * This class resets the variables and buttons to their default state
      * Nodes = undefined
