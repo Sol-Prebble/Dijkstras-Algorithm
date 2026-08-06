@@ -16,7 +16,7 @@ public class GraphBuilder
      */
     public GraphBuilder(Map<String, Color> colorPalette)
     {
-        this.graph = defaultGraph(colorPalette);
+        this.graph = testingGraph(colorPalette);
     }
 
     /**
@@ -56,6 +56,35 @@ public class GraphBuilder
         nodes.add(four);
         nodes.add(five);
         
+        
+        for(int x = 0; x < nodes.size(); x++){
+            Node currentNode = nodes.get(x);
+            graph.addNode(currentNode);
+        }   
+        /* edges */
+        for(Node n : graph.getAllNodes()){
+            ArrayList<Edge> currentEdges = n.getEdges();
+            for(int e = 0; e < currentEdges.size(); e++){
+                Edge currentEdge = currentEdges.get(e);
+                currentEdge.setColor(colorPalette.get("edgeDefault"));
+            }
+        }
+        
+        
+        return graph;
+    }
+    /**
+     * This method is used as a default graph for the algorithm
+     * @param
+     *      nodes - the arraylist collection of every node
+     *      graph - an object of the custom class Graph. It is essentailly a map of all the nodes
+     *       = 
+     * @return
+     *      void (nothing)
+     */
+    private Graph testingGraph(Map<String, Color> colorPalette){
+        ArrayList<Node> nodes = new ArrayList<>();
+        Color nodeColor = colorPalette.get("nodeDefault");
         
         for(int x = 0; x < nodes.size(); x++){
             Node currentNode = nodes.get(x);
