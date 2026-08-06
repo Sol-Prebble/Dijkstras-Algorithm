@@ -1,18 +1,21 @@
 #BlueJ class context
-#Thu Aug 06 18:18:45 NZST 2026
 comment0.target=Graph
-comment0.text=\n Write a description of class Graph here.\n https\://www.w3schools.com/Java/java_hashmap.asp\n https\://stackoverflow.com/questions/1348199/what-is-the-difference-between-the-hashmap-and-map-objects-in-java\n @author Sol Prebble\n @version 6-8-26\n
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ Graph\ here.\r\n\ https\://www.w3schools.com/Java/java_hashmap.asp\r\n\ https\://stackoverflow.com/questions/1348199/what-is-the-difference-between-the-hashmap-and-map-objects-in-java\r\n\ @author\ Sol\ Prebble\r\n\ @version\ 6-8-26\r\n
 comment1.params=nodes
 comment1.target=Graph(java.util.ArrayList)
 comment1.text=constructors
+comment2.params=
 comment2.target=Graph()
 comment3.params=node
-comment3.target=void addNode(Node)
-comment3.text=\n Adds a node to the graph\n @param node - that is being added\n @return null / void\n
+comment3.target=void\ addNode(Node)
+comment3.text=\r\n\ Adds\ a\ node\ to\ the\ graph\r\n\ @param\ node\ -\ that\ is\ being\ added\r\n\ @return\ null\ /\ void\r\n
 comment4.params=nodeName
-comment4.target=Node getNode(int)
+comment4.target=Node\ getNode(int)
 comment4.text=getters
-comment5.target=java.util.ArrayList getAllNodes()
-comment6.target=java.util.Map getMap()
-comment7.target=boolean isEmpty()
+comment5.params=
+comment5.target=java.util.ArrayList\ getAllNodes()
+comment6.params=
+comment6.target=java.util.Map\ getMap()
+comment7.params=
+comment7.target=boolean\ isEmpty()
 numComments=8

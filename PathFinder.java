@@ -127,12 +127,12 @@ public class PathFinder
     }
 
     /**
-     * EDT thread alignment
+     * EDT thread alignment - NOTE: this didn't actauly fix anything, but it works the same so I left it.
      * To sync the recolor methods with the algorithm
      *      https://codingtechroom.com/question/invoke-and-wait-swingutilities
      * To make the canvas update imediatly
      * https://codingtechroom.com/question/jcomponent-paintimmediately-java-swing
-     */ //# NOTE: this didn't actauly fix anything, but it works the same so I left it.
+     */
     /**
      * Updates the current nodes color variable
      * @param Node currentNode, Color newColor

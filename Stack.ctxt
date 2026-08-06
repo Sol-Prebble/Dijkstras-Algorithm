@@ -1,14 +1,16 @@
 #BlueJ class context
-#Thu Aug 06 18:29:09 NZST 2026
 comment0.target=Stack
-comment0.text=\n Custom data structure class for a 'Stack'\n Last in, last out\n\n @author Sol Prebble\n @8/6/26\n
+comment0.text=\r\n\ Custom\ data\ structure\ class\ for\ a\ 'Stack'\r\n\ Last\ in,\ last\ out\r\n\r\n\ @author\ Sol\ Prebble\r\n\ @8/6/26\r\n
+comment1.params=
 comment1.target=Stack()
 comment1.text=constructor
-comment2.target=boolean isEmpty()
-comment2.text=\n checks if the stack is empty or not\n @param null\n @return boolean\n
+comment2.params=
+comment2.target=boolean\ isEmpty()
+comment2.text=\r\n\ checks\ if\ the\ stack\ is\ empty\ or\ not\r\n\ @param\ null\r\n\ @return\ boolean\r\n
 comment3.params=node
-comment3.target=void push(Node)
-comment3.text=\n Adds a node to the top of the stack\n @param node - that will be added\n @return void/null\n
-comment4.target=Node pop()
-comment4.text=\n Removes a node from the top of the stack\n @param null\n @return node - that was removed\n
+comment3.target=void\ push(Node)
+comment3.text=\r\n\ Adds\ a\ node\ to\ the\ top\ of\ the\ stack\r\n\ @param\ node\ -\ that\ will\ be\ added\r\n\ @return\ void/null\r\n
+comment4.params=
+comment4.target=Node\ pop()
+comment4.text=\r\n\ Removes\ a\ node\ from\ the\ top\ of\ the\ stack\r\n\ @param\ null\r\n\ @return\ node\ -\ that\ was\ removed\r\n
 numComments=5

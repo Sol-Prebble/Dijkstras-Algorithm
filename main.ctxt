@@ -1,8 +1,7 @@
 #BlueJ class context
-#Fri Aug 07 07:10:46 NZST 2026
 comment0.target=main
-comment0.text=\n sets up the program\n\n @author  Sol Prebble\n @version 6-8-26\n
+comment0.text=\r\n\ sets\ up\ the\ program\r\n\r\n\ @author\ \ Sol\ Prebble\r\n\ @version\ 6-8-26\r\n
 comment1.params=args
-comment1.target=void main(java.lang.String[])
-comment1.text=\n Layered Panes\: https\://docs.oracle.com/javase/8/docs/api/javax/swing/JLayeredPane.html\n
+comment1.target=void\ main(java.lang.String[])
+comment1.text=\r\n\ Layered\ Panes\:\ https\://docs.oracle.com/javase/8/docs/api/javax/swing/JLayeredPane.html\r\n
 numComments=2

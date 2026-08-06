@@ -1,13 +1,12 @@
 #BlueJ class context
-#Thu Aug 06 19:28:58 NZST 2026
 comment0.target=PanelCanvas
-comment0.text=\n Creates and maintains the GUI window\n\n @author Sol Prebble\n @version 6-8-26\n
-comment1.params=nodes colorPalette
-comment1.target=PanelCanvas(java.util.ArrayList, java.util.Map)
-comment1.text=\n Constructor for objects of class PanelCanvas\n
+comment0.text=\r\n\ Creates\ and\ maintains\ the\ GUI\ window\r\n\r\n\ @author\ Sol\ Prebble\r\n\ @version\ 6-8-26\r\n
+comment1.params=nodes\ colorPalette
+comment1.target=PanelCanvas(java.util.ArrayList,\ java.util.Map)
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ PanelCanvas\r\n
 comment2.params=g
-comment2.target=void paintComponent(java.awt.Graphics)
+comment2.target=void\ paintComponent(java.awt.Graphics)
 comment3.params=nodes
-comment3.target=Graph setUpGraph(java.util.ArrayList)
-comment3.text=\n Creates a new graphBuilder and extracts the graph\n @param nodes(list)\n @return Graph (obejct)\n
+comment3.target=Graph\ setUpGraph(java.util.ArrayList)
+comment3.text=\r\n\ Creates\ a\ new\ graphBuilder\ and\ extracts\ the\ graph\r\n\ @param\ nodes(list)\r\n\ @return\ Graph\ (obejct)\r\n
 numComments=4
