@@ -1,25 +1,25 @@
 #BlueJ class context
+#Fri Aug 07 10:38:14 NZST 2026
 comment0.target=GraphBuilder
-comment0.text=\r\n\ Creates\ a\ graph\r\n\r\n\ @author\ Sol\ Prebble\r\n\ @version\ 6-8-26\r\n
+comment0.text=\n Creates a graph\n\n @author Sol Prebble\n @version 6-8-26\n
 comment1.params=colorPalette
 comment1.target=GraphBuilder(java.util.Map)
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ GraphBuilder\r\n\ Creates\ a\ new\ graph\r\n
+comment1.text=\n Constructor for objects of class GraphBuilder\n Creates a new graph\n
 comment2.params=colorPalette
-comment2.target=Graph\ defaultGraph(java.util.Map)
-comment2.text=\r\n\ This\ method\ is\ used\ as\ a\ default\ graph\ for\ the\ algorithm\r\n\ @param\r\n\ \ \ \ \ \ nodes\ -\ the\ arraylist\ collection\ of\ every\ node\r\n\ \ \ \ \ \ graph\ -\ an\ object\ of\ the\ custom\ class\ Graph.\ It\ is\ essentailly\ a\ map\ of\ all\ the\ nodes\r\n\ \ \ \ \ \ \ \=\ \r\n\ @return\r\n\ \ \ \ \ \ void\ (nothing)\r\n
+comment2.target=Graph defaultGraph(java.util.Map)
+comment2.text=\n This method is used as a default graph for the algorithm\n @param\n      nodes - the arraylist collection of every node\n      graph - an object of the custom class Graph. It is essentailly a map of all the nodes\n       \= \n @return\n      void (nothing)\n
 comment3.params=colorPalette
-comment3.target=Graph\ testingGraph(java.util.Map)
-comment3.text=\r\n\ This\ method\ is\ used\ as\ a\ testing\ graph.\ To\ make\ changes\ that\ wouldn't\ effect\ the\ default\ graph\r\n\ @param\r\n\ \ \ \ \ \ nodes\ -\ the\ arraylist\ collection\ of\ every\ node\r\n\ \ \ \ \ \ graph\ -\ an\ object\ of\ the\ custom\ class\ Graph.\ It\ is\ essentailly\ a\ map\ of\ all\ the\ nodes\r\n\ \ \ \ \ \ \ \ \r\n\ @return\r\n\ \ \ \ \ \ void\ (nothing)\r\n
-comment4.params=start\ target
-comment4.target=int\ edgeDistanceCalc(Node,\ Node)
-comment4.text=\r\n\ Calculates\ the\ distance\ between\ two\ nodes\r\n\ @param\ start\ (node),\ target\ (node)\r\n\ @return\ distance\ (int)\r\n
+comment3.target=Graph testingGraph(java.util.Map)
+comment3.text=\n This method is used as a testing graph. To make changes that wouldn't effect the default graph\n @param\n      nodes - the arraylist collection of every node\n      graph - an object of the custom class Graph. It is essentailly a map of all the nodes\n        \n @return\n      void (nothing)\n
+comment4.params=start target
+comment4.target=int edgeDistanceCalc(Node, Node)
+comment4.text=\n Calculates the distance between two nodes\n @param start (node), target (node)\n @return distance (int)\n
 comment5.params=colorPalette
-comment5.target=void\ resetGraph(java.util.Map)
-comment5.text=\ \r\n\ sets\ the\ color\ of\ all\ the\ nodes\ and\ edges\ to\ default\r\n
-comment6.params=
-comment6.target=Graph\ getGraph()
+comment5.target=void resetGraph(java.util.Map)
+comment5.text=\ \n sets the color of all the nodes and edges to default\n
+comment6.target=Graph getGraph()
 comment6.text=Getters
 comment7.params=graph
-comment7.target=void\ setGraph(Graph)
+comment7.target=void setGraph(Graph)
 comment7.text=setters
 numComments=8

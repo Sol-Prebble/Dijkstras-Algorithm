@@ -18,21 +18,6 @@ public class Theme
         this.palette = darkPalette();
     }
     /**
-     * Sets up all the nodes and edges with the colors that have been chosen
-     * @param graph - that contains the nodes
-     * @return null / void
-     */
-    private void setUpColors(Graph graph){
-        for(Node currentNode : graph.getAllNodes()){
-            currentNode.setColor(palette.get("nodeDefault"));
-            ArrayList<Edge> currentEdges = currentNode.getEdges();
-            for(int e = 0; e < currentEdges.size(); e++){
-                Edge currentEdge = currentEdges.get(e);
-                currentEdge.setColor(palette.get("edgeDefault"));
-            }
-        }
-    }
-    /**
      * The dark version of the color palette
      * Creates a map with all the different colors to be used throughout the program
      * Sets them up with the same name as the variable to be used for calling the color

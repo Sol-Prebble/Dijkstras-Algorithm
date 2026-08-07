@@ -1,22 +1,16 @@
 #BlueJ class context
+#Fri Aug 07 10:38:11 NZST 2026
 comment0.target=Theme
-comment0.text=\r\n\ This\ class\ controls\ the\ color\ palette\ that\ the\ program\ uses.\r\n\ It\ contains\ methods\ for\ each\ variaty\ and\ also\ to\ add\ the\ colors\ to\ nodes\ and\ edges\r\n\r\n\ @author\ Sol\ Prebble\r\n\ @version\ 6-8-26\r\n
-comment1.params=
+comment0.text=\n This class controls the color palette that the program uses.\n It contains methods for each variaty and also to add the colors to nodes and edges\n\n @author Sol Prebble\n @version 6-8-26\n
 comment1.target=Theme()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ Theme\r\n
-comment2.params=graph
-comment2.target=void\ setUpColors(Graph)
-comment2.text=\r\n\ Sets\ up\ all\ the\ nodes\ and\ edges\ with\ the\ colors\ that\ have\ been\ chosen\r\n\ @param\ graph\ -\ that\ contains\ the\ nodes\r\n\ @return\ null\ /\ void\r\n
-comment3.params=
-comment3.target=java.util.Map\ darkPalette()
-comment3.text=\r\n\ The\ dark\ version\ of\ the\ color\ palette\r\n\ Creates\ a\ map\ with\ all\ the\ different\ colors\ to\ be\ used\ throughout\ the\ program\r\n\ Sets\ them\ up\ with\ the\ same\ name\ as\ the\ variable\ to\ be\ used\ for\ calling\ the\ color\r\n\ @param\ null\r\n\ @return\ darkPalette\ -\ the\ map\ of\ the\ colors\r\n
-comment4.params=
-comment4.target=java.util.Map\ lightPalette()
-comment4.text=\r\n\ The\ light\ version\ of\ the\ color\ palette\r\n\ Creates\ a\ map\ with\ all\ the\ different\ colors\ to\ be\ used\ throughout\ the\ program\r\n\ Sets\ them\ up\ with\ the\ same\ name\ as\ the\ variable\ to\ be\ used\ for\ calling\ the\ color\r\n\ @param\ null\r\n\ @return\ lightPalette\ -\ the\ map\ of\ the\ colors\r\n
-comment5.params=
-comment5.target=java.util.Map\ getPalette()
-comment5.text=Getters
-comment6.params=palette
-comment6.target=void\ setPalette(java.util.Map)
-comment6.text=Setters
-numComments=7
+comment1.text=\n Constructor for objects of class Theme\n
+comment2.target=java.util.Map darkPalette()
+comment2.text=\n The dark version of the color palette\n Creates a map with all the different colors to be used throughout the program\n Sets them up with the same name as the variable to be used for calling the color\n @param null\n @return darkPalette - the map of the colors\n
+comment3.target=java.util.Map lightPalette()
+comment3.text=\n The light version of the color palette\n Creates a map with all the different colors to be used throughout the program\n Sets them up with the same name as the variable to be used for calling the color\n @param null\n @return lightPalette - the map of the colors\n
+comment4.target=java.util.Map getPalette()
+comment4.text=Getters
+comment5.params=palette
+comment5.target=void setPalette(java.util.Map)
+comment5.text=Setters
+numComments=6

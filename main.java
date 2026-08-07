@@ -9,11 +9,6 @@ import java.awt.*;
  */
 public class main
 {
-    private static Node start;
-    private static Node target; 
-    private static Map<String, Color> colorPalette;
-    private static Graph graph;
-
     /**
      * Layered Panes: https://docs.oracle.com/javase/8/docs/api/javax/swing/JLayeredPane.html
      */
@@ -26,7 +21,7 @@ public class main
 
         /* Graph */
         GraphBuilder graphBuilder = new GraphBuilder(theme.getPalette());
-        graph = graphBuilder.getGraph();
+        Graph graph = graphBuilder.getGraph();
         nodes = graph.getAllNodes();
         
         PanelCanvas canvas = new PanelCanvas(nodes, theme.getPalette());
