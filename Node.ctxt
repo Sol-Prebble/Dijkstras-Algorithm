@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Aug 07 10:35:59 NZST 2026
+#Fri Aug 07 18:39:10 NZST 2026
 comment0.target=Node
 comment0.text=\n This is the Node class\n Each object is a node for the graph\n @author\: Sol Prebble\n @version\: 6-8-26\n
 comment1.params=name x y color

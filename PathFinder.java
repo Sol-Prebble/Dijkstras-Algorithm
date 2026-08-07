@@ -120,7 +120,7 @@ public class PathFinder
 
     public void threadSleep(){
         try{
-            Thread.sleep(100); // pause the algorithm for 250ms
+            Thread.sleep(300); // pause the algorithm for 300ms
         } catch (InterruptedException e){
             e.printStackTrace();
         }

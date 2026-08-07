@@ -9,7 +9,7 @@ import java.awt.Color;
 public class Node{
     private int name;
     /* Algorithmic variables */
-    private ArrayList<Edge> edges = new ArrayList<Edge>();
+    private ArrayList<Edge> edges;
     private int distanceFromStart;
     private boolean visited;
     private Node previous;
@@ -22,7 +22,7 @@ public class Node{
     /* Constructor */
     public Node(int name, int x, int y, Color color){
         this.name = name;
-        this.edges = edges;
+        this.edges = new ArrayList<Edge>();
         this.distanceFromStart = Integer.MAX_VALUE;
         this.visited = false;
         this.previous = null;

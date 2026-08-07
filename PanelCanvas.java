@@ -74,15 +74,4 @@ public class PanelCanvas extends JPanel
         }
     }
 
-    /**
-     * Creates a new graphBuilder and extracts the graph
-     * @param nodes(list)
-     * @return Graph (obejct)
-     */
-    private Graph setUpGraph(ArrayList<Node> nodes){
-        GraphBuilder graphBuilder = new GraphBuilder(colorPalette);
-        this.graph = graphBuilder.getGraph();
-        return graph;
-    }
-
 }

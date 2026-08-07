@@ -1,15 +1,8 @@
-Class documentation
+Project documentation
 <---- javadoc command: ---->
 /usr/share/bluej/jdk/bin/javadoc
--author
--version
--nodeprecated
--package
--Xdoclint:none
--noindex
--notree
--nohelp
--nonavbar
+-sourcepath
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm
 -source
 21
 -classpath
@@ -20,16 +13,121 @@ Class documentation
 UTF-8
 -charset
 UTF-8
+-doctitle
+Dijkstras-Algorithm
+-windowtitle
+Dijkstras-Algorithm
+-author
+-version
+-nodeprecated
+-package
+-Xdoclint:none
+-link
+https://docs.oracle.com/en/java/javase/21/docs/api/
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Graph.java
 /home/solomon/Documents/GitHub/Dijkstras-Algorithm/ControlPanel.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PanelCanvas.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Node.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Theme.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/GraphBuilder.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/main.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Edge.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Queue.java
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Stack.java
 <---- end of javadoc command ---->
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/Graph.java...
 Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/ControlPanel.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/PanelCanvas.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/Node.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/Theme.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/GraphBuilder.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/main.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/Edge.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/Queue.java...
+Loading source file /home/solomon/Documents/GitHub/Dijkstras-Algorithm/Stack.java...
 Constructing Javadoc information...
+Building index for all the packages and classes...
 Standard Doclet version 21.0.6+7-LTS
 Building tree for all the packages and classes...
 Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/ControlPanel.html...
-/home/solomon/Documents/GitHub/Dijkstras-Algorithm/ControlPanel.java:333: warning: @return tag cannot be used in method with void return type.
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/ControlPanel.java:304: warning: @return tag cannot be used in method with void return type.
     public void enableResetButton(PanelCanvas canvas){
                 ^
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/Edge.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/Graph.html...
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Graph.java:42: warning: @return tag cannot be used in method with void return type.
+    public void addNode(Node node){
+                ^
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/GraphBuilder.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/main.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/Node.html...
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Node.java:52: warning: @return tag cannot be used in method with void return type.
+    public void resetNode(Color color){
+                ^
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/PanelCanvas.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/PathFinder.html...
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:35: warning: @return tag cannot be used in method with void return type.
+    public void runAlgorithm(Node startNode, Node endNode, Map<String, Color> colorPalette, ControlPanel controlPanel){
+                ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:56: warning: @param argument "Node" is not a parameter name.
+     * @param Node currentNode
+       ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:59: warning: @return tag cannot be used in method with void return type.
+    public void findShortestLocalPath(Node currentNode){
+                ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:88: warning: @param argument "Node" is not a parameter name.
+     * @param Node startNode, Node currentNode
+       ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:110: warning: @param argument "Stack" is not a parameter name.
+     * @param Stack path
+       ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:113: warning: @return tag cannot be used in method with void return type.
+    public void printFinalPath(Stack path){
+                ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:138: warning: @param argument "Node" is not a parameter name.
+     * @param Node currentNode, Color newColor
+       ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:141: warning: @return tag cannot be used in method with void return type.
+    public void recolorNode(Node currentNode, Color newColor){
+                ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:154: warning: @param argument "Edge" is not a parameter name.
+     * @param Edge currentEdge, Color newColor
+       ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/PathFinder.java:157: warning: @return tag cannot be used in method with void return type.
+    public void recolorEdge(Edge currentEdge, Color newColor){
+                ^
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/Queue.html...
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Queue.java:73: warning: @return tag cannot be used in method with void return type.
+    public void enqueue(Node node){
+                ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Queue.java:86: warning: @param argument "null" is not a parameter name.
+     * @param null
+       ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Queue.java:102: warning: @param argument "null" is not a parameter name.
+     * @param null
+       ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Queue.java:105: warning: @return tag cannot be used in method with void return type.
+    public void print(){
+                ^
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/Stack.html...
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Stack.java:57: warning: @return tag cannot be used in method with void return type.
+    public void push(Node node){
+                ^
+/home/solomon/Documents/GitHub/Dijkstras-Algorithm/Stack.java:64: warning: @param argument "null" is not a parameter name.
+     * @param null
+       ^
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/Theme.html...
 Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/package-summary.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/package-tree.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/serialized-form.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/overview-tree.html...
+Building index for all classes...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/allclasses-index.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/allpackages-index.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/index-all.html...
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/search.html...
 Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/index.html...
-1 warning
+Generating /home/solomon/Documents/GitHub/Dijkstras-Algorithm/doc/help-doc.html...
+19 warnings

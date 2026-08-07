@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Aug 07 10:38:14 NZST 2026
+#Fri Aug 07 18:42:25 NZST 2026
 comment0.target=PathFinder
 comment0.text=\n This class finds the shortest path \n It contains the aglorithm behind the animation\n\n @Sol Prebble\n @7/8/26\n
 comment1.params=graph canvas

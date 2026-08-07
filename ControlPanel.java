@@ -34,7 +34,7 @@ public class ControlPanel
         this.dropDownMenu = new JPopupMenu();
         this.colorPalette = theme.getPalette();
         this.layeredPane = new JLayeredPane();
-        this.items = new HashMap();
+        this.items = new HashMap<String, JMenuItem>();
         this.nodes = nodes;
         /* buttons */
         this.pickStartButton = new JButton("Pick Start");
@@ -178,25 +178,20 @@ public class ControlPanel
      * @return null
      */
     private void pickStartButton(){
-
-        pickStartButton.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
+        dropDownMenu.removeAll();
+        pickStartButton.addActionListener(e -> {
                     updateDropDownVisibility();
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
                         String name = ("item"+x);
                         items.put(name, new JMenuItem(String.valueOf(currentNode.getName())));
                         dropDownMenu.add(items.get(name));
-                        items.get(name).addActionListener(new ActionListener(){
-                                @Override
-                                public void actionPerformed(ActionEvent e){
+                        items.get(name).addActionListener(evt ->{
                                     start = currentNode;
                                     pickStartButton.setBackground(colorPalette.get("buttonDisabled"));
                                     pickStartButton.setEnabled(false);
                                     pickTargetButton.setBackground(colorPalette.get("buttonEnabled"));    
                                     pickTargetButton.setEnabled(true);
-                                }
                             });
                     }
                     dropDownMenu.show(
@@ -204,7 +199,6 @@ public class ControlPanel
                         0, 
                         pickStartButton.getHeight()
                     );
-                }
             });
     }
 
@@ -215,24 +209,19 @@ public class ControlPanel
      * @return null
      */
     private void pickTargetButton(){
-        pickTargetButton.addActionListener(new ActionListener(){
-                @Override
-                public void actionPerformed(ActionEvent e){
+        pickTargetButton.addActionListener(e ->{
                     updateDropDownVisibility();
                     for(int x = 0; x < nodes.size(); x++){
                         Node currentNode = nodes.get(x);
                         String name = ("item"+x);
                         items.put(name, new JMenuItem(String.valueOf(currentNode.getName())));
                         dropDownMenu.add(items.get(name));
-                        items.get(name).addActionListener(new ActionListener(){
-                                @Override
-                                public void actionPerformed(ActionEvent e){
+                        items.get(name).addActionListener(evt ->{
                                     target = currentNode;
                                     pickTargetButton.setBackground(colorPalette.get("buttonDisabled"));    
                                     pickTargetButton.setEnabled(false);
                                     runButton.setBackground(colorPalette.get("buttonEnabled"));
                                     runButton.setEnabled(true);
-                                }
                             });
                     }
                     dropDownMenu.show(
@@ -240,7 +229,6 @@ public class ControlPanel
                         0, 
                         pickTargetButton.getHeight()
                     );
-                }
             });
     }
 

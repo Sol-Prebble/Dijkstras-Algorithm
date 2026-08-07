@@ -59,7 +59,7 @@ public class Graph
         }
         return(nodes);
     }
-    public Map getMap(){
+    public Map<String, GraphNode> getMap(){
         return(this.map);
     }
     

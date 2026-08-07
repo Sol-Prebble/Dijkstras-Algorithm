@@ -1,5 +1,5 @@
 #BlueJ class context
-#Fri Aug 07 10:38:14 NZST 2026
+#Fri Aug 07 18:42:25 NZST 2026
 comment0.target=PanelCanvas
 comment0.text=\n Creates and maintains the GUI window\n\n @author Sol Prebble\n @version 6-8-26\n
 comment1.params=nodes colorPalette
@@ -7,7 +7,4 @@ comment1.target=PanelCanvas(java.util.ArrayList, java.util.Map)
 comment1.text=\n Constructor for objects of class PanelCanvas\n
 comment2.params=g
 comment2.target=void paintComponent(java.awt.Graphics)
-comment3.params=nodes
-comment3.target=Graph setUpGraph(java.util.ArrayList)
-comment3.text=\n Creates a new graphBuilder and extracts the graph\n @param nodes(list)\n @return Graph (obejct)\n
-numComments=4
+numComments=3

@@ -31,14 +31,14 @@ public class GraphBuilder
     private Graph defaultGraph(Map<String, Color> colorPalette){
         ArrayList<Node> nodes = new ArrayList<>();
         Color nodeColor = colorPalette.get("nodeDefault");
-        
+
         Node zero = new Node(0, 670, 190, nodeColor);
         Node one = new Node(1, 500, 400, nodeColor);
         Node two = new Node(2, 600, 100, nodeColor);
         Node three = new Node(3, 50, 300, nodeColor);
         Node four = new Node(4, 300, 320, nodeColor);
         Node five = new Node(5, 200, 150, nodeColor);
-        
+
         zero.addBidirectionalDestination(one, edgeDistanceCalc(zero,one));
         zero.addBidirectionalDestination(two, edgeDistanceCalc(zero,two));
         zero.addBidirectionalDestination(three , edgeDistanceCalc(zero,three));
@@ -48,15 +48,14 @@ public class GraphBuilder
         two.addBidirectionalDestination(four, edgeDistanceCalc(two,four));
         three.addBidirectionalDestination(four, edgeDistanceCalc(three,four));
         four.addBidirectionalDestination(five, edgeDistanceCalc(four,five));
-        
+
         nodes.add(zero);
         nodes.add(one);
         nodes.add(two);
         nodes.add(three);
         nodes.add(four);
         nodes.add(five);
-        
-        
+
         for(int x = 0; x < nodes.size(); x++){
             Node currentNode = nodes.get(x);
             graph.addNode(currentNode);
@@ -69,10 +68,10 @@ public class GraphBuilder
                 currentEdge.setColor(colorPalette.get("edgeDefault"));
             }
         }
-        
-        
+
         return graph;
     }
+
     /**
      * This method is used as a testing graph. To make changes that wouldn't effect the default graph
      * @param
@@ -85,29 +84,17 @@ public class GraphBuilder
     private Graph testingGraph(Map<String, Color> colorPalette){
         ArrayList<Node> nodes = new ArrayList<>();
         Color nodeColor = colorPalette.get("nodeDefault");
-        Node zero = new Node(0, 670, 190, nodeColor);
+        Node zero = new Node(0, 500, 200, nodeColor);
         Node one = new Node(1, 500, 400, nodeColor);
         Node two = new Node(2, 600, 100, nodeColor);
-        Node three = new Node(3, 50, 300, nodeColor);
-        Node four = new Node(4, 300, 320, nodeColor);
-        Node five = new Node(5, 200, 150, nodeColor);
-        
+
         zero.addBidirectionalDestination(one, edgeDistanceCalc(zero,one));
-        //zero.addBidirectionalDestination(two, edgeDistanceCalc(zero,two));
-        zero.addBidirectionalDestination(three , edgeDistanceCalc(zero,three));
+        zero.addBidirectionalDestination(two, edgeDistanceCalc(zero,two));
         one.addBidirectionalDestination(two, edgeDistanceCalc(one,two));
-        one.addBidirectionalDestination(three, edgeDistanceCalc(one,three));
-        two.addBidirectionalDestination(three, edgeDistanceCalc(two,three));
-        two.addBidirectionalDestination(four, edgeDistanceCalc(two,four));
-        three.addBidirectionalDestination(four, edgeDistanceCalc(three,four));
-        four.addBidirectionalDestination(five, edgeDistanceCalc(four,five));
-        
+
         nodes.add(zero);
-        nodes.add(zero);
+        nodes.add(one);
         nodes.add(two);
-        nodes.add(three);
-        nodes.add(four);
-        nodes.add(five);
         for(int x = 0; x < nodes.size(); x++){
             Node currentNode = nodes.get(x);
             graph.addNode(currentNode);
@@ -120,10 +107,10 @@ public class GraphBuilder
                 currentEdge.setColor(colorPalette.get("edgeDefault"));
             }
         }
-        
-        
+
         return graph;
     }
+
     /**
      * Calculates the distance between two nodes
      * @param start (node), target (node)
@@ -134,6 +121,7 @@ public class GraphBuilder
         int y = start.getY() - target.getY();
         return (int) Math.hypot(x, y);
     }
+
     /** 
      * sets the color of all the nodes and edges to default
      */
@@ -145,10 +133,12 @@ public class GraphBuilder
             }
         }
     }
+
     /* Getters */
     public Graph getGraph(){
         return(this.graph);
     }
+
     /* setters */
     public void setGraph(Graph graph){
         this.graph = graph;
